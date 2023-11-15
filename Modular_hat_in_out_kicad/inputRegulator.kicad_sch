@@ -207,7 +207,7 @@
     (pin "1" (uuid 8e6e4697-ed48-420e-95c5-32beaf7bda9d))
     (pin "2" (uuid 2a51221f-f8df-444c-a2a4-e341a2689246))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/00000000-0000-0000-0000-00006224fa7b"
           (reference "R9") (unit 1)
         )
@@ -281,7 +281,7 @@
     (pin "1" (uuid 19264bd4-0303-405b-b353-abbe9b5d57de))
     (pin "2" (uuid 003987a1-ef3d-460e-8bb8-a7b82eee9712))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/00000000-0000-0000-0000-00006224fa7b"
           (reference "R10") (unit 1)
         )
@@ -355,7 +355,7 @@
     (pin "1" (uuid aa3a38bc-c268-4a2d-bd5b-aa0f3835d8bc))
     (pin "2" (uuid bfc5079b-3125-434d-bf81-b390c6199a49))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/00000000-0000-0000-0000-00006224fa7b"
           (reference "R8") (unit 1)
         )
@@ -429,7 +429,7 @@
     (pin "1" (uuid d80480b5-e76a-4e7e-8b96-1eb4ea3c4b59))
     (pin "2" (uuid bf92ccf4-9795-4f99-9b73-bb1d7f234670))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/00000000-0000-0000-0000-00006224fa7b"
           (reference "D3") (unit 1)
         )

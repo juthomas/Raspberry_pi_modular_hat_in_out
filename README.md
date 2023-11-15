@@ -1,15 +1,15 @@
-# Raspberry Pi hat for modular synthesizer input
+# Raspberry Pi hat with inputs and outputs for modular synthesizer 
 
-![alt text](https://github.com/juthomas/Raspberry_pi_modular_shield/blob/master/README_images/Analog_Front.png)
-![alt text](https://github.com/juthomas/Raspberry_pi_modular_shield/blob/master/README_images/Analog_Back.png)
+![alt text](https://github.com/juthomas/Raspberry_pi_modular_hat_in_out/blob/master/README_images/Analog_Front.png)
+![alt text](https://github.com/juthomas/Raspberry_pi_modular_hat_in_out/blob/master/README_images/Analog_Back.png)
 
 ## Schematics
 
-- [Link to pdf](https://github.com/juthomas/Raspberry_pi_modular_shield/blob/master/Schematics%20PDF/Modular_Shield.pdf)
+- [Link to pdf](https://github.com/juthomas/Raspberry_pi_modular_hat_in_out/blob/master/Schematics%20PDF/Modular_Shield.pdf)
 
 ## Bill Of Materials
 
-- [Link to IBOM](https://juthomas.github.io/Raspberry_pi_modular_shield/)
+- [Link to IBOM](https://juthomas.github.io/Raspberry_pi_modular_hat_in_out/)
 
 ## Components
 

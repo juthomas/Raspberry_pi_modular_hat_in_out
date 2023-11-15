@@ -1914,7 +1914,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 0f8480b7-7489-4a1c-9919-686580de2ce8)
   )
-  (text "Raspberry Pin Headers" (at 123.19 20.32 0)
+  (text "Raspberry Pi Pin Headers" (at 123.19 20.32 0)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 1fa2515e-f92c-421d-bf7b-e5ea6b33b284)
   )
@@ -2390,7 +2390,7 @@
     (pin "8" (uuid 4f5d2372-0faf-42a8-a0b5-ee7b3c48a820))
     (pin "9" (uuid 6ec45652-d13d-459d-9f83-8e58ebe1110d))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP4") (unit 1)
         )
@@ -2420,7 +2420,7 @@
     (pin "5" (uuid 8d3ae237-6430-41f3-9261-81ec982c1e79))
     (pin "6" (uuid 624d9b2d-4330-4cb2-9355-a630aa41aa19))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP3") (unit 1)
         )
@@ -2444,7 +2444,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "H1") (unit 1)
         )
@@ -2468,7 +2468,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "H2") (unit 1)
         )
@@ -2492,7 +2492,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "H3") (unit 1)
         )
@@ -2516,7 +2516,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "H4") (unit 1)
         )
@@ -2545,7 +2545,7 @@
     (pin "1" (uuid 22ea17dd-d563-44f6-a2dc-86da9da6bed9))
     (pin "2" (uuid f1869b60-4924-467f-86d8-3293a50f9ec7))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R4") (unit 1)
         )
@@ -2574,7 +2574,7 @@
     (pin "1" (uuid b2c6fd22-fd15-4c56-9cff-f2e4713301c5))
     (pin "2" (uuid 39907e8c-b5f7-4da5-8bd4-dfeff4254be9))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R50") (unit 1)
         )
@@ -2603,7 +2603,7 @@
     (pin "1" (uuid 6d58285f-0d0e-4e3c-b612-7d9178ed2ffb))
     (pin "2" (uuid 81ac8d20-8cbc-4741-aea5-4834d5adf8e2))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R51") (unit 1)
         )
@@ -2632,7 +2632,7 @@
     (pin "1" (uuid b863eddf-504d-4e3c-acc2-81e9d98350e8))
     (pin "2" (uuid 698748d3-a3c0-4de7-9a9e-f72746ca3d33))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R52") (unit 1)
         )
@@ -2661,7 +2661,7 @@
     (pin "1" (uuid 6d4648ba-8a71-419d-99ce-894f918615b2))
     (pin "2" (uuid d9c38dbf-ff40-4459-acab-9f9fa4c3fd6b))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R53") (unit 1)
         )
@@ -2690,7 +2690,7 @@
     (pin "1" (uuid 924aa0f6-c64d-4b08-9c96-ca9da14eafae))
     (pin "2" (uuid ee7e921a-d3ac-41dd-a0b9-9f13b33483f3))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R54") (unit 1)
         )
@@ -2719,7 +2719,7 @@
     (pin "1" (uuid bde2aa22-34fc-4c3e-a614-cc7d155b8ce6))
     (pin "2" (uuid e39104ae-f2f5-4528-a694-096f00b0bef3))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R55") (unit 1)
         )
@@ -2768,7 +2768,7 @@
     (pin "8" (uuid 13fc401b-e359-4ec8-addc-f26d749241a6))
     (pin "9" (uuid 27503e52-72b3-470a-878e-39e274f5420a))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "U1") (unit 1)
         )
@@ -2797,7 +2797,7 @@
     (pin "1" (uuid e9a1ce8c-1a4c-4949-88f4-05d84878002e))
     (pin "2" (uuid bf1a91c4-55fa-4662-b05c-3c3c69f3ad58))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "R56") (unit 1)
         )
@@ -2822,7 +2822,7 @@
     )
     (pin "1" (uuid 9a783700-8a21-4e66-95d5-bdb73c11b460))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0130") (unit 1)
         )
@@ -2847,7 +2847,7 @@
     )
     (pin "1" (uuid d6bdeb34-71ef-4ae2-9535-a2d5bfbff0c0))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0131") (unit 1)
         )
@@ -2872,7 +2872,7 @@
     )
     (pin "1" (uuid 26de8640-d279-4636-a486-d280582960af))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#FLG0103") (unit 1)
         )
@@ -2921,7 +2921,7 @@
     (pin "8" (uuid 82a69fe7-7cec-4a03-9856-e0d7db0f053c))
     (pin "9" (uuid 3bbe77f8-4b9e-47b5-9891-a72cc2ef1d14))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "U3") (unit 1)
         )
@@ -2946,7 +2946,7 @@
     )
     (pin "1" (uuid 7ed21d05-d345-4f0d-ba89-fec921822411))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR02") (unit 1)
         )
@@ -2971,7 +2971,7 @@
     )
     (pin "1" (uuid b58691f6-d41f-403b-85ea-2012afbdad90))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR01") (unit 1)
         )
@@ -3035,7 +3035,7 @@
     (pin "8" (uuid ad4fd634-e3b7-4dd7-8710-35bb872afcdd))
     (pin "9" (uuid 19dfa2ce-e432-4028-8446-dd7198a0403d))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "J1") (unit 1)
         )
@@ -3060,7 +3060,7 @@
     )
     (pin "1" (uuid 468ec90e-d9f4-4b22-a5b4-d0a99b0a88a5))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR04") (unit 1)
         )
@@ -3085,7 +3085,7 @@
     )
     (pin "1" (uuid ecbf2ce4-3e38-4cf2-b40c-4dd95eecee45))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0101") (unit 1)
         )
@@ -3110,7 +3110,7 @@
     )
     (pin "1" (uuid 51cfeaf9-04a9-436b-b49d-c3fae934b45e))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0109") (unit 1)
         )
@@ -3135,7 +3135,7 @@
     )
     (pin "1" (uuid 18c0e694-0ba1-4398-af48-55ab8240b5aa))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0110") (unit 1)
         )
@@ -3160,7 +3160,7 @@
     )
     (pin "1" (uuid 27d76b7d-25f6-489c-9f6c-7730f9aa5c8a))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR05") (unit 1)
         )
@@ -3185,7 +3185,7 @@
     )
     (pin "1" (uuid f231c433-7389-4706-b3ab-691113ccae4d))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#FLG02") (unit 1)
         )
@@ -3210,7 +3210,7 @@
     )
     (pin "1" (uuid 874ac1b9-ad84-47dc-bcf1-0df84dc63e3b))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#FLG01") (unit 1)
         )
@@ -3235,7 +3235,7 @@
     )
     (pin "1" (uuid b967f857-548d-4651-a72b-81f116251329))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR03") (unit 1)
         )
@@ -3260,7 +3260,7 @@
     )
     (pin "1" (uuid 6a1f5f4e-051e-4a76-ba1d-7eb289901ab1))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0115") (unit 1)
         )
@@ -3285,7 +3285,7 @@
     )
     (pin "1" (uuid 0f6abd59-d56d-41c1-9d0e-e480493b979e))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0116") (unit 1)
         )
@@ -3310,7 +3310,7 @@
     )
     (pin "1" (uuid 9305b109-7a68-45a0-b12b-ed24c85464bd))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0117") (unit 1)
         )
@@ -3335,7 +3335,7 @@
     )
     (pin "1" (uuid a475c017-681d-4972-83f3-bf874ef47bc5))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0118") (unit 1)
         )
@@ -3360,7 +3360,7 @@
     )
     (pin "1" (uuid b8c60310-34fb-440d-96ac-3a0055d43c24))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0119") (unit 1)
         )
@@ -3385,7 +3385,7 @@
     )
     (pin "1" (uuid 31d93784-4189-41da-92fd-6c6492df2eb1))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0120") (unit 1)
         )
@@ -3410,7 +3410,7 @@
     )
     (pin "1" (uuid 161fab4e-5eb8-4948-a286-b2d159f472f1))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0121") (unit 1)
         )
@@ -3435,7 +3435,7 @@
     )
     (pin "1" (uuid 1469deb5-70f2-417a-b145-80c4f0be356b))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0122") (unit 1)
         )
@@ -3460,7 +3460,7 @@
     )
     (pin "1" (uuid e4524b0e-218f-43ed-a5ef-df79975a75f9))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0123") (unit 1)
         )
@@ -3485,7 +3485,7 @@
     )
     (pin "1" (uuid e6610dcb-7e18-4c83-bc4a-b8a44ac440cd))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0124") (unit 1)
         )
@@ -3510,7 +3510,7 @@
     )
     (pin "1" (uuid 625d77df-be27-4442-942c-dfec80bf06b7))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0125") (unit 1)
         )
@@ -3535,7 +3535,7 @@
     )
     (pin "1" (uuid e57a4a24-de6a-48e2-8491-9215319fdb79))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0126") (unit 1)
         )
@@ -3560,7 +3560,7 @@
     )
     (pin "1" (uuid 44f65b3f-e782-4e44-978b-c18f26ea520e))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0127") (unit 1)
         )
@@ -3585,7 +3585,7 @@
     )
     (pin "1" (uuid d0104a79-6e91-4816-9112-df00a6f5e059))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0128") (unit 1)
         )
@@ -3610,7 +3610,7 @@
     )
     (pin "1" (uuid 8a62481e-dc62-4af4-b06c-8a3ea27a7496))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0129") (unit 1)
         )
@@ -3635,7 +3635,7 @@
     )
     (pin "1" (uuid c8978248-0330-4848-8a07-e22b2beb6ff1))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "#PWR0102") (unit 1)
         )
@@ -3669,7 +3669,7 @@
     (pin "8" (uuid 5e9cc05d-031f-41fe-a883-11fd838e1e0d))
     (pin "9" (uuid 3f54c7c7-dbad-4688-8526-cee1ecfa9a58))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP6") (unit 1)
         )
@@ -3699,7 +3699,7 @@
     (pin "5" (uuid ef435256-cfac-453f-8a63-6b77d90e17b3))
     (pin "6" (uuid ce838e14-e632-40fb-9bd2-40676efe4ae6))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP1") (unit 1)
         )
@@ -3731,7 +3731,7 @@
     (pin "7" (uuid be174ac3-3e05-482e-ad37-7558ee45afad))
     (pin "8" (uuid 58abd20d-f3ff-40d5-baee-f6cf95679fb8))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP5") (unit 1)
         )
@@ -3763,7 +3763,7 @@
     (pin "7" (uuid f50da311-6408-460b-bb0c-550108e5b6b9))
     (pin "8" (uuid 97a4149a-ee47-4d75-9295-4d7c1903804e))
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125"
           (reference "JP2") (unit 1)
         )
@@ -3794,7 +3794,7 @@
       (uuid 0b03a83b-bc2a-44b1-afa8-0b7fbbe92b44)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "2"))
       )
     )
@@ -3823,7 +3823,7 @@
       (uuid aeee9e9d-7aaa-4cae-a62d-7376e95a69cf)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "7"))
       )
     )
@@ -3852,7 +3852,7 @@
       (uuid 6e7c263f-cfa0-4bbb-85bc-d331e7599b10)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "12"))
       )
     )
@@ -3881,7 +3881,7 @@
       (uuid 3f811c07-b4bc-4b88-8fa6-48e55d2f17d7)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "3"))
       )
     )
@@ -3910,7 +3910,7 @@
       (uuid f10b9c50-9eae-44d0-9c11-f84e05af246a)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "8"))
       )
     )
@@ -3939,7 +3939,7 @@
       (uuid 2fa11f4d-de4c-489d-84bc-3f64c2f7a9e3)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "13"))
       )
     )
@@ -3968,7 +3968,7 @@
       (uuid dc3f93d1-4d81-4d1b-b881-32d3478870a9)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "4"))
       )
     )
@@ -3997,7 +3997,7 @@
       (uuid 78e8f09c-1f3e-40cb-84b3-3c0b6ba539a3)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "9"))
       )
     )
@@ -4026,7 +4026,7 @@
       (uuid 8fd659f5-ee09-44d6-b802-7beacb597332)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "14"))
       )
     )
@@ -4055,7 +4055,7 @@
       (uuid dcae83a0-1072-4074-816e-65cb9aa8921a)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "5"))
       )
     )
@@ -4084,7 +4084,7 @@
       (uuid 2b5af6a1-c229-4e28-a0f6-f42c11a0ad01)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "10"))
       )
     )
@@ -4113,7 +4113,7 @@
       (uuid e0a478dd-0309-4c6a-9730-e57e68ddf5d3)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "15"))
       )
     )
@@ -4142,7 +4142,7 @@
       (uuid 80c2d779-246b-44d2-9843-c5cbf2ea5112)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "6"))
       )
     )
@@ -4171,7 +4171,7 @@
       (uuid 05e781c7-ec96-4a7a-b4b5-b1d5f19bc2c3)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "11"))
       )
     )
@@ -4200,7 +4200,7 @@
       (uuid 6ffdfee9-f0e0-4556-878b-f8050095a989)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "16"))
       )
     )
@@ -4229,7 +4229,7 @@
       (uuid 763daba4-4db5-44b5-b8a4-9c8a43e30ff1)
     )
     (instances
-      (project "Modular_Shield"
+      (project "Modular_hat_in_out"
         (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125" (page "17"))
       )
     )
