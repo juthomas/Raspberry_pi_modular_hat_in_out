@@ -401,7 +401,7 @@
     ]
   },
   "meta": {
-    "filename": "Raspberry_modular.kicad_pro",
+    "filename": "Modular_hat_in_out.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -745,63 +745,79 @@
     ],
     [
       "00000000-0000-0000-0000-000062272cd0",
-      "sheet62272CC4"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-000062286093",
-      "sheet62286087"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e4d6",
-      "sheet6229E4C7"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e506",
-      "sheet6229E4CA"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006224125d",
-      "sheet62241253"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-000062272ce0",
-      "sheet62272CC5"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-0000622860a3",
-      "sheet62286088"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e4e6",
-      "sheet6229E4C8"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e516",
-      "sheet6229E4CB"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006224fa7b",
-      "sheet6224FA71"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-000062272cf0",
-      "sheet62272CC6"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-0000622860b3",
-      "sheet62286089"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e4f6",
-      "sheet6229E4C9"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-00006229e526",
-      "sheet6229E4CC"
+      "inputRegulator"
     ],
     [
       "00000000-0000-0000-0000-0000622b573e",
-      "sheet622B5734"
+      "inputRegulator"
+    ],
+    [
+      "2ab92e42-c2cd-4ae0-8ca8-543d25ad917b",
+      "outputProtection"
+    ],
+    [
+      "82a39c2d-394b-49bf-99ae-1fc1346dcacd",
+      "outputProtection"
+    ],
+    [
+      "eab6a8d9-fb0b-4c2d-ba33-11c93ed22008",
+      "outputProtection"
+    ],
+    [
+      "481985a7-604e-4f80-93ea-b5106b43e0d3",
+      "outputProtection"
     ]
   ],
   "text_variables": {}
