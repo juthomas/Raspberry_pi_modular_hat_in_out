@@ -818,6 +818,22 @@
     [
       "481985a7-604e-4f80-93ea-b5106b43e0d3",
       "outputProtection"
+    ],
+    [
+      "f76d6321-14ad-4782-b936-b1db7896fa77",
+      "outputProtection1"
+    ],
+    [
+      "937c5da6-43f2-47dd-a062-aa8a99691403",
+      "outputProtection3"
+    ],
+    [
+      "2d345bcb-26d9-491b-8c54-66d3820c6680",
+      "outputProtection2"
+    ],
+    [
+      "442078b7-e4d1-492b-8b18-92b2162f1eac",
+      "outputProtection4"
     ]
   ],
   "text_variables": {}
