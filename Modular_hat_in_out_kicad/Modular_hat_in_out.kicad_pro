@@ -741,99 +741,99 @@
     ],
     [
       "00000000-0000-0000-0000-000061d07009",
-      "inputRegulator"
+      "inputRegulator1"
     ],
     [
       "00000000-0000-0000-0000-000062272cd0",
-      "inputRegulator"
+      "inputRegulator4"
     ],
     [
       "00000000-0000-0000-0000-000062286093",
-      "inputRegulator"
+      "inputRegulator7"
     ],
     [
       "00000000-0000-0000-0000-00006229e4d6",
-      "inputRegulator"
+      "inputRegulator10"
     ],
     [
       "00000000-0000-0000-0000-00006229e506",
-      "inputRegulator"
+      "inputRegulator13"
     ],
     [
       "00000000-0000-0000-0000-00006224125d",
-      "inputRegulator"
+      "inputRegulator2"
     ],
     [
       "00000000-0000-0000-0000-000062272ce0",
-      "inputRegulator"
+      "inputRegulator5"
     ],
     [
       "00000000-0000-0000-0000-0000622860a3",
-      "inputRegulator"
+      "inputRegulator8"
     ],
     [
       "00000000-0000-0000-0000-00006229e4e6",
-      "inputRegulator"
+      "inputRegulator11"
     ],
     [
       "00000000-0000-0000-0000-00006229e516",
-      "inputRegulator"
+      "inputRegulator14"
     ],
     [
       "00000000-0000-0000-0000-00006224fa7b",
-      "inputRegulator"
+      "inputRegulator3"
     ],
     [
       "00000000-0000-0000-0000-000062272cf0",
-      "inputRegulator"
+      "inputRegulator6"
     ],
     [
       "00000000-0000-0000-0000-0000622860b3",
-      "inputRegulator"
+      "inputRegulator9"
     ],
     [
       "00000000-0000-0000-0000-00006229e4f6",
-      "inputRegulator"
+      "inputRegulator12"
     ],
     [
       "00000000-0000-0000-0000-00006229e526",
-      "inputRegulator"
+      "inputRegulator15"
     ],
     [
       "00000000-0000-0000-0000-0000622b573e",
-      "inputRegulator"
+      "inputRegulator16"
     ],
     [
       "2ab92e42-c2cd-4ae0-8ca8-543d25ad917b",
-      "outputProtection"
-    ],
-    [
-      "82a39c2d-394b-49bf-99ae-1fc1346dcacd",
-      "outputProtection"
-    ],
-    [
-      "eab6a8d9-fb0b-4c2d-ba33-11c93ed22008",
-      "outputProtection"
-    ],
-    [
-      "481985a7-604e-4f80-93ea-b5106b43e0d3",
-      "outputProtection"
-    ],
-    [
-      "f76d6321-14ad-4782-b936-b1db7896fa77",
       "outputProtection1"
     ],
     [
-      "937c5da6-43f2-47dd-a062-aa8a99691403",
-      "outputProtection3"
-    ],
-    [
-      "2d345bcb-26d9-491b-8c54-66d3820c6680",
+      "82a39c2d-394b-49bf-99ae-1fc1346dcacd",
       "outputProtection2"
     ],
     [
-      "442078b7-e4d1-492b-8b18-92b2162f1eac",
+      "eab6a8d9-fb0b-4c2d-ba33-11c93ed22008",
+      "outputProtection3"
+    ],
+    [
+      "481985a7-604e-4f80-93ea-b5106b43e0d3",
       "outputProtection4"
+    ],
+    [
+      "f76d6321-14ad-4782-b936-b1db7896fa77",
+      "outputProtection5"
+    ],
+    [
+      "937c5da6-43f2-47dd-a062-aa8a99691403",
+      "outputProtection6"
+    ],
+    [
+      "2d345bcb-26d9-491b-8c54-66d3820c6680",
+      "outputProtection7"
+    ],
+    [
+      "442078b7-e4d1-492b-8b18-92b2162f1eac",
+      "outputProtection8"
     ]
   ],
   "text_variables": {}
