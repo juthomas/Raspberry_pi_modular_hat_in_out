@@ -17285,7 +17285,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:LM324 SOIC14"
 			(at 201.93 76.2 0)
 			(effects
 				(font
@@ -17304,6 +17304,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 205.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C71035"
 			(at 205.74 76.2 0)
 			(effects
 				(font
@@ -19429,7 +19438,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:LM324 SOIC14"
 			(at 201.93 35.56 0)
 			(effects
 				(font
@@ -19448,6 +19457,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 205.74 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C71035"
 			(at 205.74 35.56 0)
 			(effects
 				(font
