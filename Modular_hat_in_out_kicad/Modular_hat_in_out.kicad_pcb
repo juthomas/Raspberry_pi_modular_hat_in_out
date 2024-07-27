@@ -10993,7 +10993,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "226e6501-58d5-474a-befa-ff58c43735c7")
-		(at 141.725 26.88)
+		(at 76.162 63.462)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R72"
@@ -11441,7 +11441,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "231b9d51-1fd0-4532-b02d-5f147c0e4a45")
-		(at 141.765 31.43)
+		(at 81.242 61.684)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D22"
@@ -12161,7 +12161,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "26d9688f-c918-415a-819a-16827bda4c51")
-		(at 135.715 38.53)
+		(at 73.622 57.874)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D19"
@@ -13852,7 +13852,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "2f12420b-834c-4fc0-bf22-8a210d26dc21")
-		(at 141.725 19.78)
+		(at 83.782 59.662)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R91"
@@ -15420,7 +15420,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "36f6b9eb-e12d-4429-8d7f-8f5ee47808c7")
-		(at 135.715 17.23)
+		(at 68.542 57.874)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D17"
@@ -16588,7 +16588,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "4263f539-dcbf-42b4-b9a5-70608c78ea16")
-		(at 141.725 33.98)
+		(at 81.242 63.462)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R90"
@@ -20130,7 +20130,7 @@
 	(footprint "Modular Shield:1X08-BIG"
 		(layer "F.Cu")
 		(uuid "5d244c04-3eeb-40c4-a2f0-15e3459a92ea")
-		(at 118.9435 17.7685)
+		(at 77.432 66.764)
 		(property "Reference" "JP7"
 			(at -10.2362 -1.8288 0)
 			(layer "F.SilkS")
@@ -23155,7 +23155,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "8046825b-ff9f-4a7a-a147-2e3b5f24fd3f")
-		(at 141.765 17.23)
+		(at 83.782 57.874)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D23"
@@ -23427,7 +23427,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "819fb977-690b-41f5-bd52-bbf82e6fe331")
-		(at 135.675 26.88)
+		(at 86.322 63.462)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R92"
@@ -23651,7 +23651,7 @@
 	(footprint "Modular Shield:1X08-BIG"
 		(layer "F.Cu")
 		(uuid "82d56370-8255-4d27-8318-197ea2663e3d")
-		(at 118.9435 21.4355)
+		(at 77.432 69.415)
 		(property "Reference" "JP8"
 			(at -10.2362 -1.8288 0)
 			(layer "F.SilkS")
@@ -25982,7 +25982,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "96ea8190-3bf7-47b7-a074-1d7bf95b8837")
-		(at 141.765 24.33)
+		(at 76.202 61.684)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D20"
@@ -31629,7 +31629,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "bac3995a-d88b-4e63-83c0-08381b6c188d")
-		(at 141.725 41.08)
+		(at 78.702 59.662)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R89"
@@ -31853,7 +31853,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "bfafdb91-a3fc-491c-a673-f8a495e51e11")
-		(at 135.715 24.33)
+		(at 86.322 61.684)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D24"
@@ -33091,7 +33091,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "cc64c02e-58ff-4b6f-9184-41fa00c5503a")
-		(at 141.765 38.53)
+		(at 78.702 57.874)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D21"
@@ -35337,7 +35337,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "db58aeae-d8f9-4265-b894-9bf3a4d88e13")
-		(at 135.675 41.08)
+		(at 73.622 59.652)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R71"
@@ -37617,7 +37617,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "f6406582-fa17-4106-b861-bd32bdbc88a5")
-		(at 135.675 19.78)
+		(at 68.542 59.662)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R69"
@@ -38100,7 +38100,7 @@
 	(footprint "Modular Shield:R_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "fb9c02b1-7943-4518-a0e0-70fc77040c1a")
-		(at 135.675 33.98)
+		(at 71.082 63.462)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R70"
@@ -38324,7 +38324,7 @@
 	(footprint "Modular Shield:D_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "fd362230-3e33-44c5-aeb0-2eea3fded609")
-		(at 135.715 31.43)
+		(at 71.082 61.684)
 		(descr "Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D18"
