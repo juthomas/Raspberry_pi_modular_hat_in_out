@@ -1785,7 +1785,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm"
+			(property "Footprint" "Modular Shield:MCP4728 MSOP10"
 				(at 0 19.05 0)
 				(effects
 					(font
@@ -16546,7 +16546,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:C_0603_1608Metric"
 			(at 260.6548 119.38 0)
 			(effects
 				(font
@@ -16965,7 +16965,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm"
+		(property "Footprint" "Modular Shield:MCP4728 MSOP10"
 			(at 198.12 115.57 0)
 			(effects
 				(font
@@ -16983,7 +16983,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "12-bit digital to analog converter, quad output, 2.048V internal reference, integrated EEPROM, I2C interface"
 			(at 198.12 134.62 0)
 			(effects
 				(font
@@ -18242,7 +18242,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:C_0603_1608Metric"
 			(at 203.5048 119.38 0)
 			(effects
 				(font
@@ -18455,7 +18455,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:C_0603_1608Metric"
 			(at 272.0848 119.38 0)
 			(effects
 				(font
@@ -19507,7 +19507,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:C_0603_1608Metric"
 			(at 192.0748 119.38 0)
 			(effects
 				(font
@@ -19728,7 +19728,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm"
+		(property "Footprint" "Modular Shield:MCP4728 MSOP10"
 			(at 267.97 115.57 0)
 			(effects
 				(font
@@ -19746,7 +19746,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "12-bit digital to analog converter, quad output, 2.048V internal reference, integrated EEPROM, I2C interface"
 			(at 267.97 134.62 0)
 			(effects
 				(font

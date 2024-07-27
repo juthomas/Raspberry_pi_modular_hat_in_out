@@ -1,4 +1,4 @@
-(footprint "D_0603_1608Metric"
+(footprint "D_Z_0603_1608Metric"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -17,7 +17,7 @@
 			)
 		)
 	)
-	(property "Value" "D_0603_1608Metric"
+	(property "Value" "D_Z_0603_1608Metric"
 		(at 0 1.43 0)
 		(layer "F.Fab")
 		(uuid "be120434-8bc9-44b6-a3c6-1816f1e0b2ee")
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "bce26650-de3a-4b77-aa60-163d43adf9fd")
+		(uuid "5d6717d7-e2c1-4096-ac84-cd0333b55f52")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -44,7 +44,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e765183a-fea0-4b11-93ef-b9601f3cb71f")
+		(uuid "cc33fb5f-cdfc-42f4-b3c2-6737418ba4b7")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -56,7 +56,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "84039955-ce27-41a7-8139-88df100151c4")
+		(uuid "fef9f45f-2eff-4028-a399-bd3ebc5f52d7")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -184,6 +184,19 @@
 		)
 		(layer "F.Fab")
 		(uuid "1f514fb9-6b7e-4bf1-aa93-38147a73bec3")
+	)
+	(fp_text user "z"
+		(at -0.4 0.375 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d43ebde0-d03f-4a46-8d01-24bb12d0d7eb")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify left bottom)
+		)
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)

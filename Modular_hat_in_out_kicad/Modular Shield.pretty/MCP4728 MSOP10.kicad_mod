@@ -1,4 +1,4 @@
-(footprint "MCP4728"
+(footprint "MCP4728 MSOP10"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -17,7 +17,7 @@
 			)
 		)
 	)
-	(property "Value" "MCP4728"
+	(property "Value" "MCP4728 MSOP10"
 		(at 0 2.45 0)
 		(layer "F.Fab")
 		(uuid "8c1e1418-2886-4c2b-b2cf-f408ffe0c4ce")

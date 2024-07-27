@@ -888,7 +888,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Modular Shield:D_0603_1608Metric"
+		(property "Footprint" "Modular Shield:D_Z_0603_1608Metric"
 			(at 67.31 40.64 0)
 			(effects
 				(font

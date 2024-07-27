@@ -485,7 +485,7 @@
 				)
 			)
 		)
-		(property "Value" "1A 50V"
+		(property "Value" "300mA 100V"
 			(at 55.88 30.48 0)
 			(effects
 				(font
@@ -493,7 +493,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modular Shield:D_0603_1608Metric"
 			(at 55.88 34.29 0)
 			(effects
 				(font
@@ -538,7 +538,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C727079"
+		(property "LCSC" "C727112"
 			(at 55.88 34.29 0)
 			(effects
 				(font
