@@ -28,3 +28,11 @@
 [spidev-lib](https://github.com/juthomas/spidev-lib)
 
 dont forget to add the `-lspidev-lib` flag when compiling
+
+## Electrical Voltage dividers & multiplier
+
+### Divider
+https://tinyurl.com/24boqd2k
+
+### Multiplier
+https://tinyurl.com/27d8ra9q

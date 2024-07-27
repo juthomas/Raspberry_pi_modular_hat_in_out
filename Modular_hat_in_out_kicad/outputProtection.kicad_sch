@@ -1,250 +1,593 @@
-(kicad_sch (version 20230121) (generator eeschema)
-
-  (uuid d0e80929-ad8a-4ec3-a233-ee96020150f4)
-
-  (paper "User" 132.004 99.9998)
-
-  (lib_symbols
-    (symbol "Modular Shield:D" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "D" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "1A 50V" (at 0 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Sim.Device" "D" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Sim.Pins" "1=K 2=A" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "LCSC" "C727079" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "diode" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Diode" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "D_0_1"
-        (polyline
-          (pts
-            (xy -1.27 1.27)
-            (xy -1.27 -1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 0)
-            (xy -1.27 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 1.27)
-            (xy 1.27 -1.27)
-            (xy -1.27 0)
-            (xy 1.27 1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "D_1_1"
-        (pin passive line (at -3.81 0 0) (length 2.54)
-          (name "K" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 3.81 0 180) (length 2.54)
-          (name "A" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "Modular Shield:R 750R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "750R" (at 0 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "Modular Shield:R_0603_1608Metric" (at -1.778 0 90)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "LCSC" "C23241" (at 3.81 0 90)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "R res resistor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Resistor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R 750R_0_1"
-        (rectangle (start -1.016 2.54) (end 1.016 -2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R 750R_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-  )
-
-
-  (wire (pts (xy 74.93 34.29) (xy 81.28 34.29))
-    (stroke (width 0) (type default))
-    (uuid 27082945-3828-4ced-b9e0-a1272c85db85)
-  )
-  (wire (pts (xy 59.69 34.29) (xy 67.31 34.29))
-    (stroke (width 0) (type default))
-    (uuid ddce4970-f580-46a7-a8d6-05aa6ecb7c6e)
-  )
-  (wire (pts (xy 45.72 34.29) (xy 52.07 34.29))
-    (stroke (width 0) (type default))
-    (uuid f6c4f791-e0f7-4c09-87f4-33980e0c2268)
-  )
-
-  (hierarchical_label "IN" (shape input) (at 45.72 34.29 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 0af51d18-85ce-4622-a63a-5111c23d0d21)
-  )
-  (hierarchical_label "OUT" (shape output) (at 81.28 34.29 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 3f88cab5-5f18-4515-b875-f2efe54f7a19)
-  )
-
-  (symbol (lib_id "Modular Shield:R 750R") (at 71.12 34.29 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 10b7b31c-ce2a-474a-b799-95e5948f7e2d)
-    (property "Reference" "R69" (at 71.12 27.94 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "750R" (at 71.12 30.48 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Modular Shield:R_0603_1608Metric" (at 71.12 36.068 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 71.12 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "LCSC" "C23241" (at 71.12 30.48 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid eec25dd9-f86f-46dd-8ffd-e13ebc6da563))
-    (pin "2" (uuid 18f362a1-4304-42f7-b4a6-cca57a0e750d))
-    (instances
-      (project "Modular_hat_in_out"
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2ab92e42-c2cd-4ae0-8ca8-543d25ad917b"
-          (reference "R69") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/82a39c2d-394b-49bf-99ae-1fc1346dcacd"
-          (reference "R70") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/eab6a8d9-fb0b-4c2d-ba33-11c93ed22008"
-          (reference "R71") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/481985a7-604e-4f80-93ea-b5106b43e0d3"
-          (reference "R72") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/f76d6321-14ad-4782-b936-b1db7896fa77"
-          (reference "R89") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2d345bcb-26d9-491b-8c54-66d3820c6680"
-          (reference "R91") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/937c5da6-43f2-47dd-a062-aa8a99691403"
-          (reference "R90") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/442078b7-e4d1-492b-8b18-92b2162f1eac"
-          (reference "R92") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Modular Shield:D") (at 55.88 34.29 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid e93e27f0-b3d4-46c8-ae4b-8e242ef8e787)
-    (property "Reference" "D17" (at 55.88 27.94 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "1A 50V" (at 55.88 30.48 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 55.88 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 55.88 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Sim.Device" "D" (at 55.88 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Sim.Pins" "1=K 2=A" (at 55.88 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "LCSC" "C727079" (at 55.88 34.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c33caf65-a27a-4d88-8aa1-aef2ea1e0706))
-    (pin "2" (uuid e0511ed8-7af2-46ab-8a8f-512ed1926b19))
-    (instances
-      (project "Modular_hat_in_out"
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2ab92e42-c2cd-4ae0-8ca8-543d25ad917b"
-          (reference "D17") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/82a39c2d-394b-49bf-99ae-1fc1346dcacd"
-          (reference "D18") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/eab6a8d9-fb0b-4c2d-ba33-11c93ed22008"
-          (reference "D19") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/481985a7-604e-4f80-93ea-b5106b43e0d3"
-          (reference "D20") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/f76d6321-14ad-4782-b936-b1db7896fa77"
-          (reference "D21") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2d345bcb-26d9-491b-8c54-66d3820c6680"
-          (reference "D23") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/937c5da6-43f2-47dd-a062-aa8a99691403"
-          (reference "D22") (unit 1)
-        )
-        (path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/442078b7-e4d1-492b-8b18-92b2162f1eac"
-          (reference "D24") (unit 1)
-        )
-      )
-    )
-  )
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "d0e80929-ad8a-4ec3-a233-ee96020150f4")
+	(paper "User" 132.004 99.9998)
+	(lib_symbols
+		(symbol "Modular Shield:D"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1A 50V"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC" "C727079"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Modular Shield:R 750R"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "750R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Modular Shield:R_0603_1608Metric"
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC" "C23241"
+				(at 3.81 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R 750R_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R 750R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 74.93 34.29) (xy 81.28 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27082945-3828-4ced-b9e0-a1272c85db85")
+	)
+	(wire
+		(pts
+			(xy 59.69 34.29) (xy 67.31 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddce4970-f580-46a7-a8d6-05aa6ecb7c6e")
+	)
+	(wire
+		(pts
+			(xy 45.72 34.29) (xy 52.07 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6c4f791-e0f7-4c09-87f4-33980e0c2268")
+	)
+	(hierarchical_label "IN"
+		(shape input)
+		(at 45.72 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0af51d18-85ce-4622-a63a-5111c23d0d21")
+	)
+	(hierarchical_label "OUT"
+		(shape output)
+		(at 81.28 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3f88cab5-5f18-4515-b875-f2efe54f7a19")
+	)
+	(symbol
+		(lib_id "Modular Shield:R 750R")
+		(at 71.12 34.29 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "10b7b31c-ce2a-474a-b799-95e5948f7e2d")
+		(property "Reference" "R69"
+			(at 71.12 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "750R"
+			(at 71.12 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Modular Shield:R_0603_1608Metric"
+			(at 71.12 36.068 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 71.12 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C23241"
+			(at 71.12 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "eec25dd9-f86f-46dd-8ffd-e13ebc6da563")
+		)
+		(pin "2"
+			(uuid "18f362a1-4304-42f7-b4a6-cca57a0e750d")
+		)
+		(instances
+			(project "Modular_hat_in_out"
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2ab92e42-c2cd-4ae0-8ca8-543d25ad917b"
+					(reference "R69")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2d345bcb-26d9-491b-8c54-66d3820c6680"
+					(reference "R91")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/442078b7-e4d1-492b-8b18-92b2162f1eac"
+					(reference "R92")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/481985a7-604e-4f80-93ea-b5106b43e0d3"
+					(reference "R72")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/82a39c2d-394b-49bf-99ae-1fc1346dcacd"
+					(reference "R70")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/937c5da6-43f2-47dd-a062-aa8a99691403"
+					(reference "R90")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/eab6a8d9-fb0b-4c2d-ba33-11c93ed22008"
+					(reference "R71")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/f76d6321-14ad-4782-b936-b1db7896fa77"
+					(reference "R89")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Modular Shield:D")
+		(at 55.88 34.29 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e93e27f0-b3d4-46c8-ae4b-8e242ef8e787")
+		(property "Reference" "D17"
+			(at 55.88 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1A 50V"
+			(at 55.88 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C727079"
+			(at 55.88 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c33caf65-a27a-4d88-8aa1-aef2ea1e0706")
+		)
+		(pin "2"
+			(uuid "e0511ed8-7af2-46ab-8a8f-512ed1926b19")
+		)
+		(instances
+			(project "Modular_hat_in_out"
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2ab92e42-c2cd-4ae0-8ca8-543d25ad917b"
+					(reference "D17")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/2d345bcb-26d9-491b-8c54-66d3820c6680"
+					(reference "D23")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/442078b7-e4d1-492b-8b18-92b2162f1eac"
+					(reference "D24")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/481985a7-604e-4f80-93ea-b5106b43e0d3"
+					(reference "D20")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/82a39c2d-394b-49bf-99ae-1fc1346dcacd"
+					(reference "D18")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/937c5da6-43f2-47dd-a062-aa8a99691403"
+					(reference "D22")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/eab6a8d9-fb0b-4c2d-ba33-11c93ed22008"
+					(reference "D19")
+					(unit 1)
+				)
+				(path "/f7f606ea-7d0c-4680-9293-4d1bbfd60125/f76d6321-14ad-4782-b936-b1db7896fa77"
+					(reference "D21")
+					(unit 1)
+				)
+			)
+		)
+	)
 )
