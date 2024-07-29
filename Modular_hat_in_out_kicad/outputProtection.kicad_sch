@@ -73,7 +73,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC" "C727079"
+			(property "LCSC" "C727112"
 				(at 0 0 0)
 				(effects
 					(font
@@ -511,7 +511,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Diode"
 			(at 55.88 34.29 0)
 			(effects
 				(font
