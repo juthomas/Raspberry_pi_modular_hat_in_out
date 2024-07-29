@@ -1,4 +1,4 @@
-23710851724285971
+23722907269991922
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -64337,6 +64337,13 @@ Yellow 5381 Series LED
 2
 2
 Modular Shield
+1X02-BIG
+
+
+0
+2
+2
+Modular Shield
 1X06-BIG
 
 
@@ -64365,7 +64372,21 @@ CNES
 0
 0
 Modular Shield
+C_0603_1608Metric
+Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor
+0
+2
+2
+Modular Shield
 D_0603_1608Metric
+Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Modular Shield
+D_Z_0603_1608Metric
 Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 diode
 0
@@ -64400,7 +64421,7 @@ MCP3008 SOIC16
 16
 16
 Modular Shield
-MCP4728
+MCP4728 MSOP10
 MSOP, 10 Pin (https://www.jedec.org/system/files/docs/mo-187F.pdf variant BA), generated with kicad-footprint-generator ipc_gullwing_generator.py
 MSOP SO
 0
@@ -64427,6 +64448,34 @@ PIN_20X2
 0
 40
 40
+Modular Shield
+Pigeon-1
+
+
+0
+0
+0
+Modular Shield
+Pigeon-2
+
+
+0
+0
+0
+Modular Shield
+Pigeon-3
+
+
+0
+0
+0
+Modular Shield
+Pigeon-4
+
+
+0
+0
+0
 Modular Shield
 R_0603_1608Metric
 Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
