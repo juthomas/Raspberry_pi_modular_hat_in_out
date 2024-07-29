@@ -2425,7 +2425,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Footprint" "Modular Shield:1X06-BIG"
+			(property "Footprint" "Modular Shield:1X02-BIG"
 				(at 0 0 0)
 				(effects
 					(font
@@ -16134,7 +16134,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Modular Shield:1X06-BIG"
+		(property "Footprint" "Modular Shield:1X02-BIG"
 			(at 278.13 87.63 0)
 			(effects
 				(font

@@ -2227,7 +2227,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Modular Shield:1X06-BIG"
+		(property "Footprint" "Modular Shield:1X02-BIG"
 			(at 0 0 0)
 			(effects
 				(font
