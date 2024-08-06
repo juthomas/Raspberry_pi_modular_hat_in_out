@@ -1,4 +1,4 @@
-23722907269991922
+23733242709990767
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -64428,6 +64428,13 @@ MSOP SO
 10
 10
 Modular Shield
+Mac-SE
+
+
+0
+0
+0
+Modular Shield
 Moon
 
 
@@ -64477,6 +64484,34 @@ Pigeon-4
 0
 0
 Modular Shield
+Pigeon-5
+
+
+0
+0
+0
+Modular Shield
+Pigeon-6
+
+
+0
+0
+0
+Modular Shield
+Plant-1
+
+
+0
+0
+0
+Modular Shield
+Plant-2
+
+
+0
+0
+0
+Modular Shield
 R_0603_1608Metric
 Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
 resistor
@@ -64499,6 +64534,13 @@ Stephen_Hawking
 0
 Modular Shield
 Synthesizer
+
+
+0
+0
+0
+Modular Shield
+Text
 
 
 0
