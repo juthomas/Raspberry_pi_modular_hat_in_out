@@ -13,10 +13,6 @@
 
 ## Components
 
-- [10K Resistors](https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_UNI-ROYAL-Uniroyal-Elec-0603WAF1002T5E_C25804.html) C25804
-
-- [Zener Diodes](https://www.lcsc.com/product-detail/Zener-Diodes_onsemi-SZMM5Z6V8T1G_C894569.html) C894569
-
 - [MCP3008](https://www.lcsc.com/product-detail/Analog-To-Digital-Converters-ADCs_Microchip-Tech-MCP3008-I-SL_C1520159.html) C1520159
 
 - [LM324](https://www.lcsc.com/product-detail/Operational-Amplifier_STMicroelectronics-LM324DT_C71035.html) C71035
