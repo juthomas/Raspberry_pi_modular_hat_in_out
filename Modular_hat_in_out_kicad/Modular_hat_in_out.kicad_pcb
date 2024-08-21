@@ -269,7 +269,7 @@
 		(path "/00000000-0000-0000-0000-000061f941cc")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -25.4 -1.905)
 			(end -25.4 1.905)
@@ -2544,7 +2544,7 @@
 		(path "/00000000-0000-0000-0000-000061b62971")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr exclude_from_pos_files exclude_from_bom dnp)
 		(fp_circle
 			(center 0 0)
 			(end 2.7 0)
@@ -2721,7 +2721,7 @@
 		(path "/00000000-0000-0000-0000-000061b6dd57")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr exclude_from_pos_files exclude_from_bom dnp)
 		(fp_circle
 			(center 0 0)
 			(end 2.7 0)
@@ -2898,7 +2898,7 @@
 		(path "/00000000-0000-0000-0000-000061b78e4e")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr exclude_from_pos_files exclude_from_bom dnp)
 		(fp_circle
 			(center 0 0)
 			(end 2.7 0)
@@ -3075,7 +3075,7 @@
 		(path "/00000000-0000-0000-0000-000061b351ea")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr exclude_from_pos_files exclude_from_bom dnp)
 		(fp_circle
 			(center 0 0)
 			(end 2.7 0)
@@ -3263,7 +3263,7 @@
 		(path "/00000000-0000-0000-0000-0000664f9d51")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -12.7 -1.27)
 			(end 12.7 -1.27)
@@ -3625,7 +3625,7 @@
 		(path "/00000000-0000-0000-0000-0000f6917365")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -10.16 1.27)
 			(end -10.16 -1.27)
@@ -3939,7 +3939,7 @@
 		(path "/00000000-0000-0000-0000-000048cd7b62")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -7.62 -1.27)
 			(end 7.62 -1.27)
@@ -4205,7 +4205,7 @@
 		(path "/00000000-0000-0000-0000-00002aeccf64")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -12.7 -1.27)
 			(end 12.7 -1.27)
@@ -4567,7 +4567,7 @@
 		(path "/00000000-0000-0000-0000-0000eb76d72f")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -10.16 1.27)
 			(end -10.16 -1.27)
@@ -4881,7 +4881,7 @@
 		(path "/00000000-0000-0000-0000-0000a75a2b47")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -7.62 -1.27)
 			(end 7.62 -1.27)
@@ -8658,7 +8658,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "a68f45ca-fd05-4524-ae24-d83c5b7b65c1")
@@ -8705,7 +8705,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8917,7 +8917,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "fc87aea6-14b4-49e5-a0af-5d7fcde71ff8")
@@ -8964,7 +8964,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10709,7 +10709,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "458800d2-d884-42ff-882d-7f10828081f2")
@@ -10756,7 +10756,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15554,6 +15554,19 @@
 				)
 			)
 		)
+		(property "JLCPCB Rotation Offset" "270"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "31bcbb62-68c4-41d5-b80d-d8baded76ac6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/7b854bab-4c86-4052-8d0c-a3a395b68b1c")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
@@ -15944,7 +15957,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "53166120-32b0-4d55-a89f-b745197d1b14")
@@ -15991,7 +16004,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16203,7 +16216,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "8cc02d43-e29e-4ab4-a5aa-132190ee3d6a")
@@ -16250,7 +16263,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16910,7 +16923,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "45a5e6b3-1a32-4147-8556-9542fcbf356d")
@@ -16957,7 +16970,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18974,7 +18987,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "e4904d86-6118-4eb6-95fb-eea4dea4564a")
@@ -19021,7 +19034,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22417,7 +22430,7 @@
 				)
 			)
 		)
-		(property "JLCPCB Position Offset" "0.65, 0"
+		(property "JLCPCB Position Offset" "0, -0.16"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23014,7 +23027,7 @@
 		(path "/202e5177-09a8-415e-ade7-2f4058ecdebe")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -10.16 -1.27)
 			(end 10.16 -1.27)
@@ -25506,7 +25519,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "070da98d-70cb-45a4-91a6-123a578be465")
@@ -25553,7 +25566,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27461,7 +27474,7 @@
 		(path "/8e5cfb04-d3f7-48b4-a89c-05c3c466d7f3")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
 		(fp_line
 			(start -10.16 -1.27)
 			(end 10.16 -1.27)
@@ -27937,7 +27950,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "2672f04e-60ba-4666-bf2f-0eedbc1f24e4")
@@ -27984,7 +27997,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -30014,7 +30027,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "fac450c6-c416-4b17-b459-6bda8fac04c8")
@@ -30061,7 +30074,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31404,7 +31417,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "ea827fb1-bbd6-40bc-8e0a-b42845bed377")
@@ -31451,7 +31464,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31713,7 +31726,7 @@
 		(path "/2aee3390-2bad-4309-93ea-ba11562f2963")
 		(sheetname "Root")
 		(sheetfile "Modular_hat_in_out.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom)
+		(attr through_hole exclude_from_pos_files dnp)
 		(fp_line
 			(start -2.54 -1.27)
 			(end 2.54 -1.27)
@@ -32943,7 +32956,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "aee8fcf8-33cc-4df8-ae63-6caafcb1c7ea")
@@ -32990,7 +33003,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33391,7 +33404,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "85c8f0de-7f32-45bd-9802-59cf626da8e9")
@@ -33438,7 +33451,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33874,7 +33887,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "9c908e9a-2783-4619-af6f-5e8ad98aca86")
@@ -33921,7 +33934,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34133,7 +34146,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "955fa23f-dc53-4372-9ae4-87428b873762")
@@ -34180,7 +34193,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34616,7 +34629,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "ee2cf714-8b9f-47db-bf29-cf4dc49acee5")
@@ -34663,7 +34676,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -36972,7 +36985,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "ae1257f8-6a85-40cb-851d-8ddfbae6bfd8")
@@ -37019,7 +37032,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37420,7 +37433,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "dddaf500-f30a-4342-8b23-ce7f4b9e6096")
@@ -37467,7 +37480,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37679,7 +37692,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "a10cbd66-6b87-4090-89fc-4fa67eab0e1c")
@@ -37726,7 +37739,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38210,7 +38223,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "523a54fc-716b-4432-ad6c-eacb2fa0464a")
@@ -38257,7 +38270,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40747,7 +40760,7 @@
 				)
 			)
 		)
-		(property "JLCPCB Position Offset" "0.65, 0"
+		(property "JLCPCB Position Offset" "0, -0.16"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -41742,7 +41755,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "ff3d85b1-bd8b-47bd-aeda-a84bebf32c30")
@@ -41789,7 +41802,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42449,7 +42462,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "d2dc434b-f51e-441f-b73c-831180b7f717")
@@ -42496,7 +42509,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42729,6 +42742,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8b9da1b5-c87c-41bf-b8ff-617c551c4770")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation Offset" "270"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "38e35051-f1aa-44a1-971d-cd4d25b713e8")
 			(effects
 				(font
 					(size 1 1)
@@ -43574,7 +43600,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "ffe04231-2478-4c7d-9287-50cd7148f0fe")
@@ -43621,7 +43647,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45158,7 +45184,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "e35ada0f-75e3-44f6-b72e-aff45f6bf031")
@@ -45205,7 +45231,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")

@@ -464,7 +464,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061d07ac3")
-		(property "Reference" "R9"
+		(property "Reference" "R2"
 			(at 72.39 30.48 90)
 			(effects
 				(font
@@ -600,7 +600,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061d08ea2")
-		(property "Reference" "R10"
+		(property "Reference" "R3"
 			(at 82.55 30.48 90)
 			(effects
 				(font
@@ -736,7 +736,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061d09579")
-		(property "Reference" "R8"
+		(property "Reference" "R1"
 			(at 62.23 30.48 90)
 			(effects
 				(font
@@ -872,7 +872,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061d11266")
-		(property "Reference" "D3"
+		(property "Reference" "D1"
 			(at 67.31 46.99 0)
 			(effects
 				(font
@@ -880,7 +880,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Zener 6.6V"
+		(property "Value" "D_Zener 6.8V"
 			(at 67.31 44.45 0)
 			(effects
 				(font
@@ -915,7 +915,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C894569"
+		(property "LCSC" "C2832575"
 			(at 67.31 46.99 0)
 			(effects
 				(font

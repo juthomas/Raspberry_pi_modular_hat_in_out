@@ -35,4 +35,5 @@ dont forget to add the `-lspidev-lib` flag when compiling
 https://tinyurl.com/24boqd2k
 
 ### Multiplier
-https://tinyurl.com/27d8ra9q
+<!-- https://tinyurl.com/27d8ra9q -->
+https://tinyurl.com/2aczbd22

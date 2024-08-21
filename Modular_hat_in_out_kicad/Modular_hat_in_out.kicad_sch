@@ -11422,7 +11422,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-00002aeccf64")
 		(property "Reference" "JP4"
 			(at 114.3 19.685 0)
@@ -11515,7 +11515,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000048cd7b62")
 		(property "Reference" "JP3"
 			(at 137.16 53.975 0)
@@ -11596,7 +11596,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b351ea")
 		(property "Reference" "H1"
 			(at 278.257 47.8536 0)
@@ -11659,7 +11659,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b62971")
 		(property "Reference" "H2"
 			(at 278.257 52.9336 0)
@@ -11722,7 +11722,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b6dd57")
 		(property "Reference" "H3"
 			(at 278.257 58.0136 0)
@@ -11785,7 +11785,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b78e4e")
 		(property "Reference" "H4"
 			(at 278.257 63.0936 0)
@@ -12443,7 +12443,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Position Offset" "0.65, 0"
+		(property "JLCPCB Position Offset" "0, -0.16"
 			(at 269.24 175.26 0)
 			(effects
 				(font
@@ -12851,7 +12851,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Position Offset" "0.65, 0"
+		(property "JLCPCB Position Offset" "0, -0.16"
 			(at 219.71 175.26 0)
 			(effects
 				(font
@@ -13054,7 +13054,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061f941cc")
 		(property "Reference" "J1"
 			(at 43.18 25.4 0)
@@ -14746,7 +14746,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-0000664f9d51")
 		(property "Reference" "JP6"
 			(at 137.16 19.685 0)
@@ -14839,7 +14839,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-0000a75a2b47")
 		(property "Reference" "JP1"
 			(at 114.3 53.975 0)
@@ -14920,7 +14920,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-0000eb76d72f")
 		(property "Reference" "JP5"
 			(at 114.3 88.265 0)
@@ -15007,7 +15007,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-0000f6917365")
 		(property "Reference" "JP2"
 			(at 137.16 88.265 0)
@@ -15171,7 +15171,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 179.07 25.4 90)
 			(effects
 				(font
@@ -15206,7 +15206,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 179.07 21.59 90)
 			(effects
 				(font
@@ -15672,7 +15672,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "202e5177-09a8-415e-ade7-2f4058ecdebe")
 		(property "Reference" "JP7"
 			(at 114.3 125.095 0)
@@ -16113,7 +16113,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "2aee3390-2bad-4309-93ea-ba11562f2963")
 		(property "Reference" "JP9"
@@ -16404,7 +16404,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 179.07 66.04 90)
 			(effects
 				(font
@@ -16439,7 +16439,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 179.07 62.23 90)
 			(effects
 				(font
@@ -16481,7 +16481,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 232.41 25.4 90)
 			(effects
 				(font
@@ -16516,7 +16516,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 232.41 21.59 90)
 			(effects
 				(font
@@ -17475,6 +17475,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Rotation Offset" "270"
+			(at 205.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5e0c27c2-4551-4be7-8fb7-0c7f15f6345c")
 		)
@@ -17598,7 +17607,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8e5cfb04-d3f7-48b4-a89c-05c3c466d7f3")
 		(property "Reference" "JP8"
 			(at 137.16 125.095 0)
@@ -17696,7 +17705,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 179.07 93.98 90)
 			(effects
 				(font
@@ -17731,7 +17740,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 179.07 97.79 90)
 			(effects
 				(font
@@ -18777,7 +18786,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 232.41 53.34 90)
 			(effects
 				(font
@@ -18812,7 +18821,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 232.41 57.15 90)
 			(effects
 				(font
@@ -19142,7 +19151,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 232.41 93.98 90)
 			(effects
 				(font
@@ -19177,7 +19186,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 232.41 97.79 90)
 			(effects
 				(font
@@ -19439,7 +19448,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 179.07 53.34 90)
 			(effects
 				(font
@@ -19474,7 +19483,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 179.07 57.15 90)
 			(effects
 				(font
@@ -19551,6 +19560,15 @@
 			)
 		)
 		(property "LCSC" "C71035"
+			(at 205.74 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Rotation Offset" "270"
 			(at 205.74 35.56 0)
 			(effects
 				(font
@@ -19706,7 +19724,7 @@
 				)
 			)
 		)
-		(property "Value" "48K"
+		(property "Value" "43K"
 			(at 232.41 66.04 90)
 			(effects
 				(font
@@ -19741,7 +19759,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C227922"
+		(property "LCSC" "C23172"
 			(at 232.41 62.23 90)
 			(effects
 				(font
