@@ -5,7 +5,7 @@
 
 ## Schematics
 
-- [Link to pdf](https://github.com/juthomas/Raspberry_pi_modular_hat_in_out/blob/master/Schematics%20PDF/Modular_Shield.pdf)
+- [Link to pdf](https://github.com/juthomas/Raspberry_pi_modular_hat_in_out/blob/master/Schematics%20PDF/Modular_hat_in_out.pdf)
 
 ## Bill Of Materials
 
