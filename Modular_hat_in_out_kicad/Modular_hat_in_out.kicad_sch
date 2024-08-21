@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "f7f606ea-7d0c-4680-9293-4d1bbfd60125")
 	(paper "User" 317.627 242.138)
+	(title_block
+		(title "Modular Hat")
+		(date "2024-08-21")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "MCP3008_1"
 			(pin_names

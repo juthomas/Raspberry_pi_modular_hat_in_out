@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "d0e80929-ad8a-4ec3-a233-ee96020150f4")
 	(paper "User" 132.004 99.9998)
+	(title_block
+		(title "Output Protection")
+		(date "2024-08-21")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "Modular Shield:D"
 			(pin_numbers hide)

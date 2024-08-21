@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "7c389534-ba7d-4968-a974-e72a821bf472")
 	(paper "User" 132.004 99.9998)
+	(title_block
+		(title "Input Regulator")
+		(date "2024-08-21")
+		(rev "1.0")
+	)
 	(lib_symbols
 		(symbol "Modular Shield:D_Zener"
 			(pin_numbers hide)
