@@ -2121,6 +2121,26 @@
 					)
 				)
 			)
+			(symbol "MountingHole_1_1"
+				(pin no_connect line
+					(at 0 0 90)
+					(length 2.54) hide
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
 		)
 		(symbol "Modular Shield:PINHD-1X10"
 			(pin_names
@@ -11596,7 +11616,7 @@
 	)
 	(symbol
 		(lib_id "Modular Shield:MountingHole")
-		(at 275.717 49.022 0)
+		(at 274.32 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11604,7 +11624,7 @@
 		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b351ea")
 		(property "Reference" "H1"
-			(at 278.257 47.8536 0)
+			(at 276.86 48.3616 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11613,7 +11633,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 278.257 50.165 0)
+			(at 276.86 50.673 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11622,7 +11642,7 @@
 			)
 		)
 		(property "Footprint" "Modular Shield:MountingHole_2.7mm_M2.5"
-			(at 275.717 49.022 0)
+			(at 274.32 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11631,7 +11651,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.717 49.022 0)
+			(at 274.32 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11639,14 +11659,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 275.717 49.022 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 274.32 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "1"
+			(uuid "7b6273c7-1477-438b-84c1-b8f88291f0be")
 		)
 		(instances
 			(project "Modular_hat_in_out"
@@ -11659,7 +11682,7 @@
 	)
 	(symbol
 		(lib_id "Modular Shield:MountingHole")
-		(at 275.717 54.102 0)
+		(at 274.32 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11667,7 +11690,7 @@
 		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b62971")
 		(property "Reference" "H2"
-			(at 278.257 52.9336 0)
+			(at 276.86 53.4416 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11676,7 +11699,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 278.257 55.245 0)
+			(at 276.86 55.753 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11685,7 +11708,7 @@
 			)
 		)
 		(property "Footprint" "Modular Shield:MountingHole_2.7mm_M2.5"
-			(at 275.717 54.102 0)
+			(at 274.32 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11694,7 +11717,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.717 54.102 0)
+			(at 274.32 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11702,14 +11725,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 275.717 54.102 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 274.32 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "1"
+			(uuid "eb557e28-fd25-4847-9c36-fa414f8ed781")
 		)
 		(instances
 			(project "Modular_hat_in_out"
@@ -11722,7 +11748,7 @@
 	)
 	(symbol
 		(lib_id "Modular Shield:MountingHole")
-		(at 275.717 59.182 0)
+		(at 274.32 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11730,7 +11756,7 @@
 		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b6dd57")
 		(property "Reference" "H3"
-			(at 278.257 58.0136 0)
+			(at 276.86 58.5216 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11739,7 +11765,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 278.257 60.325 0)
+			(at 276.86 60.833 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11748,7 +11774,7 @@
 			)
 		)
 		(property "Footprint" "Modular Shield:MountingHole_2.7mm_M2.5"
-			(at 275.717 59.182 0)
+			(at 274.32 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11757,7 +11783,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.717 59.182 0)
+			(at 274.32 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11765,14 +11791,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 275.717 59.182 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 274.32 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "1"
+			(uuid "ac54038f-047f-43a2-8dea-c26f84125596")
 		)
 		(instances
 			(project "Modular_hat_in_out"
@@ -11785,7 +11814,7 @@
 	)
 	(symbol
 		(lib_id "Modular Shield:MountingHole")
-		(at 275.717 64.262 0)
+		(at 274.32 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11793,7 +11822,7 @@
 		(dnp yes)
 		(uuid "00000000-0000-0000-0000-000061b78e4e")
 		(property "Reference" "H4"
-			(at 278.257 63.0936 0)
+			(at 276.86 63.6016 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11802,7 +11831,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 278.257 65.405 0)
+			(at 276.86 65.913 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11811,7 +11840,7 @@
 			)
 		)
 		(property "Footprint" "Modular Shield:MountingHole_2.7mm_M2.5"
-			(at 275.717 64.262 0)
+			(at 274.32 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11820,7 +11849,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.717 64.262 0)
+			(at 274.32 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11828,14 +11857,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 275.717 64.262 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 274.32 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "1"
+			(uuid "3f51e091-aaeb-48e6-b27a-acc75fe3a1f3")
 		)
 		(instances
 			(project "Modular_hat_in_out"
