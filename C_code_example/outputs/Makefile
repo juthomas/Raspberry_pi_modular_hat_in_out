@@ -21,7 +21,7 @@ FLAGS =  # $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 
 INC = $(INC_DIR:%=-I./%)
 
-LIBS = -lm -lspidev-lib -lwiringPi
+LIBS = -lm -lspidev-lib -lgpiod
 
 # CC = clang $(FLAGS) $(INC)
 CC = gcc $(FLAGS)

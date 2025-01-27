@@ -5,24 +5,86 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
-#include <wiringPi.h>
+#include <gpiod.h>
 #include <sys/ioctl.h>
 
 // GPIO pins for LDAC and RDY of the two MCP4728s
-#define LDAC_1_PIN 30 // GPIO0 pour le MCP4728 numéro 1
-#define RDY_1_PIN 6	  // GPIO1 pour le MCP4728 numéro 1
+#define LDAC_0_PIN 00  // Numéro GPIO pour LDAC
+#define RDY_0_PIN 25    // Numéro GPIO pour RDY
+#define LDAC_1_PIN 1  // Numéro GPIO pour LDAC
+#define RDY_1_PIN 21    // Numéro GPIO pour RDY
+#define CHIP_NAME "gpiochip0"
 
 #define NEW_ADDR_1 0x64 // Nouvelle adresse pour le premier MCP4728
 
+static struct gpiod_chip *chip;
+static struct gpiod_line *ldac_0_line;
+static struct gpiod_line *rdy_0_line;
+static struct gpiod_line *ldac_1_line;
+static struct gpiod_line *rdy_1_line;
+
+
+// Ajouter ces fonctions de remplacement pour les délais
+void delayMicroseconds(unsigned int micros) {
+    usleep(micros);
+}
+
+void delay(unsigned int millis) {
+    usleep(millis * 1000);
+}
+
+
+// Remplacer les fonctions digitalWrite/digitalRead
+static inline void gpio_write(int value)
+{
+	gpiod_line_set_value(ldac_1_line, value);
+}
+
+static inline int gpio_read(void)
+{
+	return gpiod_line_get_value(rdy_1_line);
+}
+
 void init_gpio()
 {
-	wiringPiSetup();
-	pinMode(LDAC_1_PIN, OUTPUT);
-	pinMode(RDY_1_PIN, INPUT);
+	// Ouvrir le chip GPIO
+	chip = gpiod_chip_open_by_name(CHIP_NAME);
+	if (!chip) {
+		perror("Erreur ouverture GPIO chip");
+		exit(1);
+	}
 
-	pullUpDnControl(RDY_1_PIN, PUD_UP);
-	digitalWrite(LDAC_1_PIN, 1); // LDAC initialement haut
+	// Obtenir les lignes GPIO
+	ldac_0_line = gpiod_chip_get_line(chip, LDAC_0_PIN);
+	rdy_0_line = gpiod_chip_get_line(chip, RDY_0_PIN);
+	ldac_1_line = gpiod_chip_get_line(chip, LDAC_1_PIN);
+	rdy_1_line = gpiod_chip_get_line(chip, RDY_1_PIN);
+
+	if (!ldac_0_line || !rdy_0_line || !ldac_1_line || !rdy_1_line) {
+		perror("Erreur obtention des lignes GPIO");
+		exit(1);
+	}
+
+	if (gpiod_line_request_output(ldac_0_line, "analog_input", 1) < 0) {
+		perror("Erreur configuration LDAC");
+		exit(1);
+	}
+	if (gpiod_line_request_input(rdy_0_line, "analog_input") < 0) {
+		perror("Erreur configuration RDY");
+		exit(1);
+	}
+	// Configurer les lignes
+	if (gpiod_line_request_output(ldac_1_line, "analog_input", 1) < 0) {
+		perror("Erreur configuration LDAC");
+		exit(1);
+	}
+
+	if (gpiod_line_request_input(rdy_1_line, "analog_input") < 0) {
+		perror("Erreur configuration RDY");
+		exit(1);
+	}
 }
+
 
 // Fonction pour initialiser l'I2C
 int i2c_init(const char *i2c_bus)
@@ -71,10 +133,10 @@ int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
 	}
 
 	// Vérifier l'état de RDY avant d'envoyer la commande
-	printf("État de RDY avant l'envoi de la commande : %d\n", digitalRead(RDY_1_PIN));
+	printf("État de RDY avant l'envoi de la commande : %d\n", gpio_read());
 
 	// Transition de LDAC : doit être haut pour commencer
-	digitalWrite(LDAC_1_PIN, 1);
+	gpio_write(1);
 	delayMicroseconds(50); // Assurer une stabilité avant l'envoi de la commande
 
 	// Envoyer la commande pour changer l'adresse
@@ -86,17 +148,17 @@ int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
 
 	// Transition de LDAC de haut à bas juste après le 2ème octet
 	delayMicroseconds(50);		 // Délai court après l'envoi des deux premiers octets
-	digitalWrite(LDAC_1_PIN, 0); // LDAC passe à bas pour terminer la commande
+	gpio_write(0); // LDAC passe à bas pour terminer la commande
 
 	// Vérifier l'état de RDY après l'envoi de la commande
-	printf("État de RDY après la commande : %d\n", digitalRead(RDY_1_PIN));
+	printf("État de RDY après la commande : %d\n", gpio_read());
 
 	// Attendre que RDY passe à High (l'EEPROM est en train de se programmer)
-	while (digitalRead(RDY_1_PIN) == 0)
-	{
-		printf("EEPROM est en cours de programmation, attente...\n");
+	// while (gpio_read() == 0)
+	// {
+	// 	printf("EEPROM est en cours de programmation, attente...\n");
+	// }
 		delay(100); // Attente en millisecondes
-	}
 
 	// Vérifier si l'ancienne adresse est toujours présente
 	if (check_device_at_address(file, old_address)) {
@@ -109,6 +171,47 @@ int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
 	return 0;
 }
 
+void cleanup_gpio(void)
+{
+	if (ldac_1_line) gpiod_line_release(ldac_1_line);
+	if (rdy_1_line) gpiod_line_release(rdy_1_line);
+	if (chip) gpiod_chip_close(chip);
+}
+void scan_i2c_bus(int file) {
+    printf("\nScanning I2C bus...\n");
+    printf("     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
+
+    for (int i = 0; i < 128; i += 16) {
+        printf("%02x: ", i);
+        
+        for (int j = 0; j < 16; j++) {
+            int addr = i + j;
+            if (addr < 0x03 || addr > 0x77) {
+                printf("   "); // Skip reserved addresses
+                continue;
+            }
+
+            // Try to communicate with the device
+            if (ioctl(file, I2C_SLAVE, addr) < 0) {
+                printf("-- ");
+                continue;
+            }
+
+            // Try to read from the device
+            char buf;
+            if (read(file, &buf, 1) < 0) {
+                printf("-- ");
+            } else {
+                printf("%02x ", addr);
+            }
+        }
+        printf("\n");
+    }
+    printf("\nScan completed.\n");
+}
+
+
+
 void main(void)
 {
 	const char *i2c_bus = "/dev/i2c-1";
@@ -117,6 +220,8 @@ void main(void)
 
 	// Rechercher le périphérique à l'adresse par défaut
 	uint8_t old_address = 0x60; // Adresse par défaut du MCP4728
+
+	scan_i2c_bus(i2c_fd);
 
 	if (check_device_at_address(i2c_fd, old_address))
 	{
@@ -145,4 +250,6 @@ void main(void)
 	{
 		printf("Aucun périphérique trouvé à l'adresse %02x\n", NEW_ADDR_1);
 	}
+
+	cleanup_gpio();
 }
