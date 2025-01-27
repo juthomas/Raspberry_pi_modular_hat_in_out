@@ -35,14 +35,14 @@ void delay(unsigned int millis) {
 
 
 // Remplacer les fonctions digitalWrite/digitalRead
-static inline void gpio_write(int value)
+static inline void gpio_write(struct gpiod_line *line, int value)
 {
-	gpiod_line_set_value(ldac_1_line, value);
+	gpiod_line_set_value(line, value);
 }
 
-static inline int gpio_read(void)
+static inline int gpio_read(struct gpiod_line *line)
 {
-	return gpiod_line_get_value(rdy_1_line);
+	return gpiod_line_get_value(line);
 }
 
 void init_gpio()
@@ -83,6 +83,12 @@ void init_gpio()
 		perror("Erreur configuration RDY");
 		exit(1);
 	}
+
+	gpio_write(ldac_0_line, 0);
+	gpio_write(ldac_1_line, 0);
+	delay(100);
+	gpio_write(ldac_0_line, 1);
+	gpio_write(ldac_1_line, 1);
 }
 
 
@@ -133,10 +139,10 @@ int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
 	}
 
 	// Vérifier l'état de RDY avant d'envoyer la commande
-	printf("État de RDY avant l'envoi de la commande : %d\n", gpio_read());
+	printf("État de RDY avant l'envoi de la commande : %d\n", gpio_read(rdy_1_line));
 
 	// Transition de LDAC : doit être haut pour commencer
-	gpio_write(1);
+	gpio_write(ldac_1_line,1);
 	delayMicroseconds(50); // Assurer une stabilité avant l'envoi de la commande
 
 	// Envoyer la commande pour changer l'adresse
@@ -148,17 +154,17 @@ int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
 
 	// Transition de LDAC de haut à bas juste après le 2ème octet
 	delayMicroseconds(50);		 // Délai court après l'envoi des deux premiers octets
-	gpio_write(0); // LDAC passe à bas pour terminer la commande
+	gpio_write(ldac_1_line, 0); // LDAC passe à bas pour terminer la commande
 
 	// Vérifier l'état de RDY après l'envoi de la commande
-	printf("État de RDY après la commande : %d\n", gpio_read());
+	printf("État de RDY après la commande : %d\n", gpio_read(rdy_1_line));
 
 	// Attendre que RDY passe à High (l'EEPROM est en train de se programmer)
-	// while (gpio_read() == 0)
+	// while (gpio_read(rdy_1_line) == 0)
 	// {
 	// 	printf("EEPROM est en cours de programmation, attente...\n");
 	// }
-		delay(100); // Attente en millisecondes
+		delay(1000); // Attente en millisecondes
 
 	// Vérifier si l'ancienne adresse est toujours présente
 	if (check_device_at_address(file, old_address)) {
