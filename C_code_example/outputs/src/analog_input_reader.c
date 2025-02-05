@@ -5,23 +5,38 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
-#include <gpiod.h>
 #include <sys/ioctl.h>
+#include <linux/i2c.h>  // Pour struct i2c_msg
 
-// GPIO pins for LDAC and RDY of the two MCP4728s
-#define LDAC_0_PIN 00  // Numéro GPIO pour LDAC
-#define RDY_0_PIN 25    // Numéro GPIO pour RDY
-#define LDAC_1_PIN 1  // Numéro GPIO pour LDAC
-#define RDY_1_PIN 21    // Numéro GPIO pour RDY
 #define CHIP_NAME "gpiochip0"
 
-#define NEW_ADDR_1 0x64 // Nouvelle adresse pour le premier MCP4728
+#define DAC_1 0x63 // Nouvelle adresse pour le premier MCP4728
+#define DAC_2 0x64 // Nouvelle adresse pour le deuxième MCP4728
 
-static struct gpiod_chip *chip;
-static struct gpiod_line *ldac_0_line;
-static struct gpiod_line *rdy_0_line;
-static struct gpiod_line *ldac_1_line;
-static struct gpiod_line *rdy_1_line;
+// DAC1, DAC0
+// 0, 0 : Channel A
+// 0, 1 : Channel B
+// 1, 0 : Channel C
+// 1, 1 : Channel D
+
+
+// UDAC
+// 0 : Upload
+// 1 : Do not upload
+
+
+// PD1, PD0
+// 0, 0 : Normal mode
+// 0, 1 : Loaded with 1kOhm
+// 1, 0 : Loaded with 100kOhm
+// 1, 1 : Loaded with 500kOhm
+
+// Gx
+// 0 : x1 gain
+// 1 : x2 gain
+
+// D11 - D0
+// Input Data
 
 
 // Ajouter ces fonctions de remplacement pour les délais
@@ -33,63 +48,6 @@ void delay(unsigned int millis) {
     usleep(millis * 1000);
 }
 
-
-// Remplacer les fonctions digitalWrite/digitalRead
-static inline void gpio_write(struct gpiod_line *line, int value)
-{
-	gpiod_line_set_value(line, value);
-}
-
-static inline int gpio_read(struct gpiod_line *line)
-{
-	return gpiod_line_get_value(line);
-}
-
-void init_gpio()
-{
-	// Ouvrir le chip GPIO
-	chip = gpiod_chip_open_by_name(CHIP_NAME);
-	if (!chip) {
-		perror("Erreur ouverture GPIO chip");
-		exit(1);
-	}
-
-	// Obtenir les lignes GPIO
-	ldac_0_line = gpiod_chip_get_line(chip, LDAC_0_PIN);
-	rdy_0_line = gpiod_chip_get_line(chip, RDY_0_PIN);
-	ldac_1_line = gpiod_chip_get_line(chip, LDAC_1_PIN);
-	rdy_1_line = gpiod_chip_get_line(chip, RDY_1_PIN);
-
-	if (!ldac_0_line || !rdy_0_line || !ldac_1_line || !rdy_1_line) {
-		perror("Erreur obtention des lignes GPIO");
-		exit(1);
-	}
-
-	if (gpiod_line_request_output(ldac_0_line, "analog_input", 1) < 0) {
-		perror("Erreur configuration LDAC");
-		exit(1);
-	}
-	if (gpiod_line_request_input(rdy_0_line, "analog_input") < 0) {
-		perror("Erreur configuration RDY");
-		exit(1);
-	}
-	// Configurer les lignes
-	if (gpiod_line_request_output(ldac_1_line, "analog_input", 1) < 0) {
-		perror("Erreur configuration LDAC");
-		exit(1);
-	}
-
-	if (gpiod_line_request_input(rdy_1_line, "analog_input") < 0) {
-		perror("Erreur configuration RDY");
-		exit(1);
-	}
-
-	gpio_write(ldac_0_line, 0);
-	gpio_write(ldac_1_line, 0);
-	delay(100);
-	gpio_write(ldac_0_line, 1);
-	gpio_write(ldac_1_line, 1);
-}
 
 
 // Fonction pour initialiser l'I2C
@@ -120,69 +78,8 @@ int check_device_at_address(int fd, uint8_t address)
 	return 1; // Périphérique trouvé à cette adresse
 }
 
-// Fonction pour changer l'adresse d'un MCP4728 avec gestion correcte de LDAC
-int mcp4728_change_address(int file, uint8_t old_address, uint8_t new_address)
-{
-	unsigned char write_cmd[4]; // Tableau pour la commande I2C
 
-	// Commande pour écrire l'adresse (C2=0, C1=1, C0=1)
-	write_cmd[0] = 0xC1;
-	write_cmd[1] = (new_address << 1) & 0xFE; // Bits d'adresse A2, A1, A0
-	write_cmd[2] = 0x00;					  // Complément de la commande
-	write_cmd[3] = 0x00;					  // Compléter le tableau de commande
 
-	// Spécifier l'adresse I²C du MCP4728 par défaut
-	if (ioctl(file, I2C_SLAVE, old_address) < 0)
-	{
-		perror("Erreur lors de la communication avec le MCP4728");
-		return -1;
-	}
-
-	// Vérifier l'état de RDY avant d'envoyer la commande
-	printf("État de RDY avant l'envoi de la commande : %d\n", gpio_read(rdy_1_line));
-
-	// Transition de LDAC : doit être haut pour commencer
-	gpio_write(ldac_1_line,1);
-	delayMicroseconds(50); // Assurer une stabilité avant l'envoi de la commande
-
-	// Envoyer la commande pour changer l'adresse
-	if (write(file, write_cmd, 4) != 4)
-	{
-		perror("Erreur lors de l'envoi de la commande de changement d'adresse");
-		return -1;
-	}
-
-	// Transition de LDAC de haut à bas juste après le 2ème octet
-	delayMicroseconds(50);		 // Délai court après l'envoi des deux premiers octets
-	gpio_write(ldac_1_line, 0); // LDAC passe à bas pour terminer la commande
-
-	// Vérifier l'état de RDY après l'envoi de la commande
-	printf("État de RDY après la commande : %d\n", gpio_read(rdy_1_line));
-
-	// Attendre que RDY passe à High (l'EEPROM est en train de se programmer)
-	// while (gpio_read(rdy_1_line) == 0)
-	// {
-	// 	printf("EEPROM est en cours de programmation, attente...\n");
-	// }
-		delay(1000); // Attente en millisecondes
-
-	// Vérifier si l'ancienne adresse est toujours présente
-	if (check_device_at_address(file, old_address)) {
-        printf("Le périphérique est toujours à l'ancienne adresse 0x%02X\n", old_address);
-    } else {
-        printf("Le périphérique n'est plus à l'ancienne adresse 0x%02X\n", old_address);
-    }
-
-	printf("Adresse changée avec succès à 0x%02X.\n", new_address);
-	return 0;
-}
-
-void cleanup_gpio(void)
-{
-	if (ldac_1_line) gpiod_line_release(ldac_1_line);
-	if (rdy_1_line) gpiod_line_release(rdy_1_line);
-	if (chip) gpiod_chip_close(chip);
-}
 void scan_i2c_bus(int file) {
     printf("\nScanning I2C bus...\n");
     printf("     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
@@ -216,46 +113,24 @@ void scan_i2c_bus(int file) {
     printf("\nScan completed.\n");
 }
 
+void i2c_write(int fd, uint8_t address, uint8_t* data, int length) {
+    if (ioctl(fd, I2C_SLAVE, address) < 0) {
+        printf("Erreur lors de l'ouverture du bus I2C\n");
+        return;
+    }
 
+    if (write(fd, data, length) != length) {
+        printf("Erreur lors de l'écriture sur le périphérique\n");
+        return;
+    }
+}
 
 void main(void)
 {
 	const char *i2c_bus = "/dev/i2c-1";
 	int i2c_fd = i2c_init(i2c_bus);
-	init_gpio();
 
 	// Rechercher le périphérique à l'adresse par défaut
-	uint8_t old_address = 0x60; // Adresse par défaut du MCP4728
 
 	scan_i2c_bus(i2c_fd);
-
-	if (check_device_at_address(i2c_fd, old_address))
-	{
-		printf("Périphérique MCP4728 trouvé à l'adresse %02x\n", old_address);
-
-		// Changer l'adresse du MCP4728
-		if (mcp4728_change_address(i2c_fd, old_address, NEW_ADDR_1) == 0)
-		{
-			printf("Adresse changée avec succès à 0x%02X.\n", NEW_ADDR_1);
-		}
-		else
-		{
-			printf("Échec du changement d'adresse à 0x%02X.\n", NEW_ADDR_1);
-		}
-	}
-	else
-	{
-		printf("Aucun périphérique trouvé à l'adresse %02x\n", old_address);
-	}
-
-	if (check_device_at_address(i2c_fd, NEW_ADDR_1))
-	{
-		printf("Périphérique MCP4728 trouvé à l'adresse %02x\n", old_address);
-	}
-	else
-	{
-		printf("Aucun périphérique trouvé à l'adresse %02x\n", NEW_ADDR_1);
-	}
-
-	cleanup_gpio();
 }
