@@ -15,6 +15,10 @@
 #define DAC_1 0x63 // Nouvelle adresse pour le premier MCP4728
 #define DAC_2 0x64 // Nouvelle adresse pour le deuxième MCP4728
 
+// LDAC GPIOs
+#define LDAC1_GPIO 0
+#define LDAC2_GPIO 1
+
 // DAC1, DAC0
 // 0, 0 : Channel A
 // 0, 1 : Channel B
@@ -127,50 +131,117 @@ void i2c_write(int fd, uint8_t address, uint8_t* data, int length) {
     }
 }
 
+// Gestion simple des GPIO via sysfs pour LDAC
+static int sysfs_write(const char *path, const char *value)
+{
+    int fd = open(path, O_WRONLY);
+    if (fd < 0) {
+        return -1;
+    }
+    ssize_t w = write(fd, value, strlen(value));
+    close(fd);
+    return (w == (ssize_t)strlen(value)) ? 0 : -1;
+}
+
+static int gpio_export(int gpio)
+{
+    char buf[64];
+    snprintf(buf, sizeof(buf), "/sys/class/gpio/export");
+    char val[16];
+    snprintf(val, sizeof(val), "%d", gpio);
+    // Ignorer l'erreur si déjà exporté
+    (void)sysfs_write(buf, val);
+    return 0;
+}
+
+static int gpio_direction_out(int gpio)
+{
+    char path[64];
+    snprintf(path, sizeof(path), "/sys/class/gpio/gpio%d/direction", gpio);
+    return sysfs_write(path, "out");
+}
+
+static int gpio_write_value(int gpio, int value)
+{
+    char path[64];
+    snprintf(path, sizeof(path), "/sys/class/gpio/gpio%d/value", gpio);
+    return sysfs_write(path, value ? "1" : "0");
+}
+
+static void ldac_pulse_low(int gpio)
+{
+    // Transition High -> Low -> High pour déclencher l'update
+    gpio_write_value(gpio, 1);
+    // Attendre brièvement pour assurer l'état
+    usleep(2);
+    gpio_write_value(gpio, 0);
+    usleep(2);
+    gpio_write_value(gpio, 1);
+}
+
+static void setup_ldac(void)
+{
+    gpio_export(LDAC1_GPIO);
+    gpio_export(LDAC2_GPIO);
+    gpio_direction_out(LDAC1_GPIO);
+    gpio_direction_out(LDAC2_GPIO);
+    // LDAC à l'état haut par défaut
+    gpio_write_value(LDAC1_GPIO, 1);
+    gpio_write_value(LDAC2_GPIO, 1);
+}
+
 // Fonction pour écrire une valeur sur un canal spécifique du MCP4728
 // channel: 0=Channel A, 1=Channel B, 2=Channel C, 3=Channel D
 // value: valeur 12-bit (0-4095)
 // vref: 0=VDD reference, 1=Internal reference
 // gain: 0=x1 gain, 1=x2 gain
 // power_down: 0=Normal, 1=Vout loaded with 1kOhm, 2=Vout loaded with 100kOhm, 3=Vout loaded with 500kOhm
-int mcp4728_write_channel(int fd, uint8_t address, uint8_t channel, uint16_t value, uint8_t vref, uint8_t gain, uint8_t power_down) {
+static int mcp4728_write_channel_with_udac(int fd, uint8_t address, uint8_t channel, uint16_t value, uint8_t vref, uint8_t gain, uint8_t power_down, uint8_t udac)
+{
     if (channel > 3) {
         printf("Erreur: canal invalide (0-3)\n");
         return -1;
     }
-    
+
     if (value > 4095) {
         printf("Erreur: valeur invalide (0-4095)\n");
         return -1;
     }
-    
-    // Format de commande MCP4728 Fast Write (méthode simplifiée):
-    // Byte 0: Command (0x58 + channel bits), High nibble = upper 4 bits of value
-    // Byte 1: Low byte of value
-    
-    uint8_t cmd[2];
-    
-    // Commande Fast Write: 0x50 base + channel<<1 + UDAC
-    // UDAC=0 pour mise à jour immédiate
-    cmd[0] = 0x50 | (channel << 1);
-    
-    // Mettre les 4 bits supérieurs de value dans le nibble haut
-    cmd[0] |= (value >> 8) & 0x0F;
-    
-    // Les 8 bits inférieurs de la valeur
-    cmd[1] = value & 0xFF;
-    
+
+    if (vref > 1 || gain > 1 || power_down > 3) {
+        printf("Erreur: paramètres vref/gain/power_down invalides\n");
+        return -1;
+    }
+
+    // Implémentation conforme au datasheet (Figure 5-8: Multi-Write)
+    // Byte2: (C2 C1 C0 W1 W0) = 0 1 0 0 0, puis DAC1 DAC0 UDAC
+    // Byte3: VREF PD1 PD0 Gx D11 D10 D9 D8
+    // Byte4: D7..D0
+
+    uint8_t buf[3];
+
+    buf[0] = (0x08 << 3) | ((channel & 0x03) << 1) | (udac & 0x01);
+    buf[1] = ((vref & 0x01) << 7) | ((power_down & 0x03) << 5) | ((gain & 0x01) << 4) | ((value >> 8) & 0x0F);
+    buf[2] = value & 0xFF;
+    // buf[2] = 0x00;
+
     if (ioctl(fd, I2C_SLAVE, address) < 0) {
         printf("Erreur lors de l'ouverture du périphérique MCP4728 à l'adresse 0x%02X\n", address);
         return -1;
     }
-    
-    if (write(fd, cmd, 2) != 2) {
+
+    if (write(fd, buf, 3) != 3) {
         printf("Erreur lors de l'écriture sur le MCP4728\n");
         return -1;
     }
-    
+
     return 0;
+}
+
+int mcp4728_write_channel(int fd, uint8_t address, uint8_t channel, uint16_t value, uint8_t vref, uint8_t gain, uint8_t power_down)
+{
+    // UDAC=0 pour mise à jour immédiate (comportement par défaut)
+    return mcp4728_write_channel_with_udac(fd, address, channel, value, vref, gain, power_down, 0);
 }
 
 // Fonction simplifiée pour écrire une valeur directement sur un canal
@@ -225,13 +296,54 @@ void main(void)
 	
 	// Exemple 4: Balayage sinusoïdal sur un canal
 	printf("\nTest 4: Balayage sur le canal C du deuxième MCP4728\n");
-	for (int i = 0; i < 100; i++) {
-		// Générer une valeur sinusoïdale approximative
-		uint16_t value = (uint16_t)(2048 + 2048 * sin(2.0 * 3.14159 * i / 100.0));
-		mcp4728_set_output(i2c_fd, DAC_2, 2, value);
-		usleep(50000);  // 50ms entre chaque valeur
+	setup_ldac();
+	// while (1) {
+	// 	for (int i = 0; i < 100; i++) {
+	// 	// Générer une valeur sinusoïdale dans l'intervalle [0..4095]
+	// 	double angle = 2.0 * 3.14159 * i / 100.0;
+	// 	uint16_t value = (uint16_t)(2048 + 2047 * sin(angle));
+	// 		// Stage les valeurs sur les registres d'entrée avec UDAC=1
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, value, 0, 0, 0, 1);
+
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, value, 0, 0, 0, 1);
+	// 		mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, value, 0, 0, 0, 1);
+
+	// 		// Déclencher la mise à jour simultanée via LDAC sur les deux périphériques
+	// 		ldac_pulse_low(LDAC1_GPIO);
+	// 		ldac_pulse_low(LDAC2_GPIO);
+	// 		usleep(50000);  // 50ms entre chaque valeur
+	// 	}
+	// }
+    while (1) {
+		for (int value = 0; value < 4096; value += 0xF) {
+		// Générer une valeur sinusoïdale dans l'intervalle [0..4095]
+
+			// Stage les valeurs sur les registres d'entrée avec UDAC=1
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, value, 0, 0, 0, 1);
+
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, value, 0, 0, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, value, 0, 0, 0, 1);
+
+			// Déclencher la mise à jour simultanée via LDAC sur les deux périphériques
+			ldac_pulse_low(LDAC1_GPIO);
+			ldac_pulse_low(LDAC2_GPIO);
+			usleep(20000);  // 50ms entre chaque valeur
+            printf("value: %d\n", value);
+		}
 	}
-	
+
+
+
 	printf("\nTests terminés!\n");
 	
 	close(i2c_fd);
