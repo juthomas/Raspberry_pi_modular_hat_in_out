@@ -5,9 +5,9 @@
 	(uuid "f7f606ea-7d0c-4680-9293-4d1bbfd60125")
 	(paper "User" 317.627 242.138)
 	(title_block
-		(title "Modular Hat")
-		(date "2024-08-21")
-		(rev "1.0")
+		(title "Pigeons")
+		(date "2025-10-28")
+		(rev "1.1")
 	)
 	(lib_symbols
 		(symbol "MCP3008_1"
@@ -12405,7 +12405,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Rotation Offset" "270"
+		(property "Position Offset" "0, -0.0"
 			(at 269.24 175.26 0)
 			(effects
 				(font
@@ -12414,7 +12414,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Position Offset" "0, -0.16"
+		(property "Rotation Offset" "270"
 			(at 269.24 175.26 0)
 			(effects
 				(font
@@ -12813,7 +12813,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Rotation Offset" "270"
+		(property "Position Offset" "0, -0.0"
 			(at 219.71 175.26 0)
 			(effects
 				(font
@@ -12822,7 +12822,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Position Offset" "0, -0.16"
+		(property "Rotation Offset" "270"
 			(at 219.71 175.26 0)
 			(effects
 				(font
@@ -17511,7 +17511,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Rotation Offset" "270"
+		(property "Rotation Offset" "270"
 			(at 205.74 76.2 0)
 			(effects
 				(font
@@ -19670,7 +19670,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Rotation Offset" "270"
+		(property "Rotation Offset" "270"
 			(at 205.74 35.56 0)
 			(effects
 				(font

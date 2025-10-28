@@ -6,8 +6,8 @@
 	(paper "User" 132.004 99.9998)
 	(title_block
 		(title "Output Protection")
-		(date "2024-08-21")
-		(rev "1.0")
+		(date "2025-10-28")
+		(rev "1.1")
 	)
 	(lib_symbols
 		(symbol "Modular Shield:D"
