@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Mid_board")(type "KiCad")(uri "${KIPRJMOD}/Mid_board.pretty")(options "")(descr ""))
+)
