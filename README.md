@@ -25,6 +25,8 @@
 
 dont forget to add the `-lspidev-lib` flag when compiling
 
+`sudo apt install libgpiod-dev`
+
 ## Electrical Voltage dividers & multiplier
 
 ### Divider
