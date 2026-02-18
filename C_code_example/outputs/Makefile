@@ -1,6 +1,6 @@
 ## Name of Project
 
-NAME = analog_input_reader
+NAME = output_generator
 
 ## Color for compilating (pink)
 
@@ -28,7 +28,7 @@ CC = gcc $(FLAGS)
 
 ## List of Headers and C files 
 
-SRC_FT = analog_input_reader
+SRC_FT = output_generator
 
 ## List of Utilities
 

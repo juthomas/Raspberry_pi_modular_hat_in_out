@@ -1,6 +1,6 @@
 ## Name of Project
 
-NAME = input_reader
+NAME = input_output_tester
 
 ## Color for compilating (pink)
 
@@ -21,14 +21,14 @@ FLAGS =  # $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 
 INC = $(INC_DIR:%=-I./%)
 
-LIBS = -lm -lspidev-lib
+LIBS = -lm -lspidev-lib -lgpiod
 
 # CC = clang $(FLAGS) $(INC)
 CC = gcc $(FLAGS)
 
 ## List of Headers and C files 
 
-SRC_FT = input_reader
+SRC_FT = input_output_tester
 
 ## List of Utilities
 

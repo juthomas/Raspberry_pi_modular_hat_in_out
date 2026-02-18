@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <gpiod.h>
 #include <errno.h>
+#include <signal.h>
 
 #define CHIP_NAME "gpiochip0"
 #define CHIP_PATH "/dev/" CHIP_NAME
@@ -32,12 +33,31 @@
 #define DEFAULT_SAMPLE_DELAY_US 1U
 #define MAX_SAMPLE_DELAY_US 1000000U
 
+#define EQUALIZER_EVERY 20U
+#define HISTORY_EVERY 100U
+
+#define MCP_OUTPUT_COUNT 8
+#define MCP_HISTORY_LINES 14
+#define MCP_HISTORY_LINE_LEN 256
+
+#define EQ_ROWS 5
+#define EQ_STEPS_PER_ROW 8
+#define EQ_BAR_WIDTH 4
+
+static volatile sig_atomic_t g_keep_running = 1;
+
 void delayMicroseconds(unsigned int micros) {
     usleep(micros);
 }
 
 void delay(unsigned int millis) {
     usleep(millis * 1000);
+}
+
+static void signal_handler(int signo)
+{
+    (void)signo;
+    g_keep_running = 0;
 }
 
 static unsigned int parse_u32_or_default(const char *raw_value, const char *param_name,
@@ -72,6 +92,7 @@ static int parse_sine_runtime_options(int argc, char **argv,
                 MIN_POINTS_PER_PERIOD, MAX_POINTS_PER_PERIOD, DEFAULT_POINTS_PER_PERIOD);
             printf("  --delay-us              : delay between samples in microseconds (0..%u), default: %u\n",
                 MAX_SAMPLE_DELAY_US, DEFAULT_SAMPLE_DELAY_US);
+            printf("Display cadence is controlled by EQUALIZER_EVERY and HISTORY_EVERY defines in source.\n");
             return 1;
         } else if (strncmp(argv[i], "--resolution=", 13) == 0) {
             *points_per_period = parse_u32_or_default(argv[i] + 13, "resolution",
@@ -157,6 +178,96 @@ void i2c_write(int fd, uint8_t address, uint8_t* data, int length) {
         printf("Error writing to device\n");
         return;
     }
+}
+
+static void mcp_build_history_line(char *line, size_t line_size, unsigned long sample_counter,
+    const float output_volts[MCP_OUTPUT_COUNT])
+{
+    int used = snprintf(line, line_size, "#%08lu", sample_counter);
+    if (used < 0 || (size_t)used >= line_size) {
+        return;
+    }
+
+    for (uint8_t ch = 0; ch < MCP_OUTPUT_COUNT; ch++) {
+        int written = snprintf(line + used, line_size - (size_t)used, " %4.1f", output_volts[ch]);
+        if (written < 0 || (size_t)written >= line_size - (size_t)used) {
+            break;
+        }
+        used += written;
+    }
+}
+
+static void mcp_push_history(char history[MCP_HISTORY_LINES][MCP_HISTORY_LINE_LEN],
+    unsigned int *history_count, const char *line)
+{
+    if (*history_count < MCP_HISTORY_LINES) {
+        snprintf(history[*history_count], MCP_HISTORY_LINE_LEN, "%s", line);
+        (*history_count)++;
+        return;
+    }
+
+    for (unsigned int i = 1; i < MCP_HISTORY_LINES; i++) {
+        snprintf(history[i - 1], MCP_HISTORY_LINE_LEN, "%s", history[i]);
+    }
+    snprintf(history[MCP_HISTORY_LINES - 1], MCP_HISTORY_LINE_LEN, "%s", line);
+}
+
+static int voltage_to_equalizer_steps(float voltage)
+{
+    double scaled;
+
+    if (voltage < 0.0f) {
+        voltage = 0.0f;
+    } else if (voltage > 10.0f) {
+        voltage = 10.0f;
+    }
+
+    scaled = ((double)voltage / 10.0) * (double)(EQ_ROWS * EQ_STEPS_PER_ROW);
+    return (int)lround(scaled);
+}
+
+static void mcp_render_dashboard(const char history[MCP_HISTORY_LINES][MCP_HISTORY_LINE_LEN],
+    unsigned int history_count, const float output_volts[MCP_OUTPUT_COUNT],
+    unsigned int points_per_period, unsigned int sample_delay_us)
+{
+    static const char *blocks[EQ_STEPS_PER_ROW + 1] = {" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
+
+    printf("\033[H\033[J");
+    printf("=== MCP output monitor ===\n");
+    printf("Config: resolution=%u points | delay=%u us | eq-every=%u | history-every=%u\n",
+        points_per_period, sample_delay_us, EQUALIZER_EVERY, HISTORY_EVERY);
+    printf("MCP output history (0..10V normalized):\n");
+
+    for (unsigned int i = 0; i < history_count; i++) {
+        printf("%s\n", history[i]);
+    }
+
+    for (int row = EQ_ROWS - 1; row >= 0; row--) {
+        printf("%2dV%6s", (row + 1) * 2, "");
+        for (uint8_t ch = 0; ch < MCP_OUTPUT_COUNT; ch++) {
+            int steps = voltage_to_equalizer_steps(output_volts[ch]);
+            int cell = steps - (row * EQ_STEPS_PER_ROW);
+
+            if (cell < 0) {
+                cell = 0;
+            } else if (cell > EQ_STEPS_PER_ROW) {
+                cell = EQ_STEPS_PER_ROW;
+            }
+
+            printf(" ");
+            for (int w = 0; w < EQ_BAR_WIDTH; w++) {
+                printf("%s", blocks[cell]);
+            }
+        }
+        printf("\n");
+    }
+
+    printf("%9s", "");
+    for (uint8_t ch = 0; ch < MCP_OUTPUT_COUNT; ch++) {
+        printf(" %4u", ch);
+    }
+    printf("\n");
+    fflush(stdout);
 }
 
 typedef struct s_ldac_gpio_ctx {
@@ -328,6 +439,11 @@ int main(int argc, char **argv)
     int ldac_error_reported = 0;
     unsigned int points_per_period;
     unsigned int sample_delay_us;
+    unsigned long sample_counter = 0;
+    char mcp_history[MCP_HISTORY_LINES][MCP_HISTORY_LINE_LEN] = {{0}};
+    unsigned int mcp_history_count = 0;
+    char history_line[MCP_HISTORY_LINE_LEN] = {0};
+    float output_volts[MCP_OUTPUT_COUNT] = {0.0f};
     int parse_status = parse_sine_runtime_options(argc, argv, &points_per_period, &sample_delay_us);
 
     if (parse_status > 0) {
@@ -336,6 +452,9 @@ int main(int argc, char **argv)
     if (parse_status < 0) {
         return 1;
     }
+
+    signal(SIGINT, signal_handler);
+    signal(SIGTERM, signal_handler);
 
 	if (i2c_fd < 0) {
         printf("Error: failed to initialize I2C bus\n");
@@ -369,11 +488,10 @@ printf("\nTest 4: Phased sine sweep on all 8 outputs\n");
         // Keep outputs moving even if LDAC cannot be driven (kernel GPIO mapping changed, permissions, etc.).
         printf("Warning: LDAC init failed, falling back to immediate DAC update mode (UDAC=0).\n");
     }
-    printf("Sine config: resolution=%u points/period, delay=%u us\n", points_per_period, sample_delay_us);
     const double two_pi = 2.0 * 3.14159265358979323846;
     const double phase_step = two_pi / 8.0;
-	while (1) {
-		for (unsigned int i = 0; i < points_per_period; i++) {
+	while (g_keep_running) {
+		for (unsigned int i = 0; i < points_per_period && g_keep_running; i++) {
             uint16_t phased_values[8];
             double angle = two_pi * (double)i / (double)points_per_period;
 
@@ -392,6 +510,10 @@ printf("\nTest 4: Phased sine sweep on all 8 outputs\n");
 			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, phased_values[6], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
 			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, phased_values[7], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
 
+            for (int output = 0; output < MCP_OUTPUT_COUNT; output++) {
+                output_volts[output] = ((float)phased_values[output] * 10.0f) / 4095.0f;
+            }
+
             if (ldac_ready) {
 			    if (ldac_pulse_low(LDAC1_GPIO) < 0 || ldac_pulse_low(LDAC2_GPIO) < 0) {
                     ldac_ready = 0;
@@ -401,14 +523,17 @@ printf("\nTest 4: Phased sine sweep on all 8 outputs\n");
                     }
                 }
             }
-            // Debug prints in this loop significantly reduce update rate and make the waveform look stepped.
-            // if ((i % 100) == 0) {
-            //     printf("Values: %u %u %u %u | %u %u %u %u\n",
-            //         (unsigned int)phased_values[0], (unsigned int)phased_values[1],
-            //         (unsigned int)phased_values[2], (unsigned int)phased_values[3],
-            //         (unsigned int)phased_values[4], (unsigned int)phased_values[5],
-            //         (unsigned int)phased_values[6], (unsigned int)phased_values[7]);
-            // }
+
+            if ((sample_counter % HISTORY_EVERY) == 0) {
+                mcp_build_history_line(history_line, sizeof(history_line), sample_counter, output_volts);
+                mcp_push_history(mcp_history, &mcp_history_count, history_line);
+            }
+            if ((sample_counter % EQUALIZER_EVERY) == 0) {
+                mcp_render_dashboard(mcp_history, mcp_history_count, output_volts,
+                    points_per_period, sample_delay_us);
+            }
+
+            sample_counter++;
             delayMicroseconds(sample_delay_us);
 		}
 	}
