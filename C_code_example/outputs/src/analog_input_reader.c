@@ -26,12 +26,67 @@
 #define MCP4728_GAIN_X1 0
 #define MCP4728_GAIN_X2 1
 
+#define DEFAULT_POINTS_PER_PERIOD 1000U
+#define MIN_POINTS_PER_PERIOD 16U
+#define MAX_POINTS_PER_PERIOD 20000U
+#define DEFAULT_SAMPLE_DELAY_US 1U
+#define MAX_SAMPLE_DELAY_US 1000000U
+
 void delayMicroseconds(unsigned int micros) {
     usleep(micros);
 }
 
 void delay(unsigned int millis) {
     usleep(millis * 1000);
+}
+
+static unsigned int parse_u32_or_default(const char *raw_value, const char *param_name,
+    unsigned int default_value, unsigned int min_value, unsigned int max_value)
+{
+    char *end = NULL;
+    unsigned long parsed;
+
+    if (!raw_value || *raw_value == '\0') {
+        printf("Warning: missing value for %s, using default %u\n", param_name, default_value);
+        return default_value;
+    }
+    errno = 0;
+    parsed = strtoul(raw_value, &end, 10);
+    if (errno != 0 || end == raw_value || *end != '\0' || parsed < min_value || parsed > max_value) {
+        printf("Warning: invalid %s='%s' (range %u..%u), using default %u\n",
+            param_name, raw_value, min_value, max_value, default_value);
+        return default_value;
+    }
+    return (unsigned int)parsed;
+}
+
+static int parse_sine_runtime_options(int argc, char **argv,
+    unsigned int *points_per_period, unsigned int *sample_delay_us)
+{
+    *points_per_period = DEFAULT_POINTS_PER_PERIOD;
+    *sample_delay_us = DEFAULT_SAMPLE_DELAY_US;
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--help") == 0) {
+            printf("Usage: %s [--resolution=<points>] [--points=<points>] [--delay-us=<microseconds>]\n", argv[0]);
+            printf("  --resolution / --points : points per sine period (%u..%u), default: %u\n",
+                MIN_POINTS_PER_PERIOD, MAX_POINTS_PER_PERIOD, DEFAULT_POINTS_PER_PERIOD);
+            printf("  --delay-us              : delay between samples in microseconds (0..%u), default: %u\n",
+                MAX_SAMPLE_DELAY_US, DEFAULT_SAMPLE_DELAY_US);
+            return 1;
+        } else if (strncmp(argv[i], "--resolution=", 13) == 0) {
+            *points_per_period = parse_u32_or_default(argv[i] + 13, "resolution",
+                DEFAULT_POINTS_PER_PERIOD, MIN_POINTS_PER_PERIOD, MAX_POINTS_PER_PERIOD);
+        } else if (strncmp(argv[i], "--points=", 9) == 0) {
+            *points_per_period = parse_u32_or_default(argv[i] + 9, "points",
+                DEFAULT_POINTS_PER_PERIOD, MIN_POINTS_PER_PERIOD, MAX_POINTS_PER_PERIOD);
+        } else if (strncmp(argv[i], "--delay-us=", 11) == 0) {
+            *sample_delay_us = parse_u32_or_default(argv[i] + 11, "delay-us",
+                DEFAULT_SAMPLE_DELAY_US, 0U, MAX_SAMPLE_DELAY_US);
+        } else {
+            printf("Warning: unknown option '%s' (use --help)\n", argv[i]);
+        }
+    }
+    return 0;
 }
 
 
@@ -265,12 +320,22 @@ int mcp4728_write_multiple_channels(int fd, uint8_t address, uint16_t values[4])
     return 0;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	const char *i2c_bus = "/dev/i2c-1";
 	int i2c_fd = i2c_init(i2c_bus);
     int ldac_ready;
     int ldac_error_reported = 0;
+    unsigned int points_per_period;
+    unsigned int sample_delay_us;
+    int parse_status = parse_sine_runtime_options(argc, argv, &points_per_period, &sample_delay_us);
+
+    if (parse_status > 0) {
+        return 0;
+    }
+    if (parse_status < 0) {
+        return 1;
+    }
 
 	if (i2c_fd < 0) {
         printf("Error: failed to initialize I2C bus\n");
@@ -298,26 +363,34 @@ printf("\nTest 3: Write all channels of first MCP4728\n");
 	mcp4728_write_multiple_channels(i2c_fd, DAC_1, values);
 //	usleep(100000);
 	delay(500);	
-printf("\nTest 4: Sweep on channel C of second MCP4728\n");
+printf("\nTest 4: Phased sine sweep on all 8 outputs\n");
 	ldac_ready = (setup_ldac() == 0);
     if (!ldac_ready) {
         // Keep outputs moving even if LDAC cannot be driven (kernel GPIO mapping changed, permissions, etc.).
         printf("Warning: LDAC init failed, falling back to immediate DAC update mode (UDAC=0).\n");
     }
+    printf("Sine config: resolution=%u points/period, delay=%u us\n", points_per_period, sample_delay_us);
+    const double two_pi = 2.0 * 3.14159265358979323846;
+    const double phase_step = two_pi / 8.0;
 	while (1) {
-		for (int i = 0; i < 1000; i++) {
-		double angle = 2.0 * 3.14159 * i / 1000.0;
-		uint16_t value = (uint16_t)(2048 + 2047 * sin(angle));
-            uint8_t udac = ldac_ready ? 1 : 0;
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+		for (unsigned int i = 0; i < points_per_period; i++) {
+            uint16_t phased_values[8];
+            double angle = two_pi * (double)i / (double)points_per_period;
 
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+            for (int output = 0; output < 8; output++) {
+                double shifted_angle = angle + ((double)output * phase_step);
+                phased_values[output] = (uint16_t)(2048.0 + 2047.0 * sin(shifted_angle));
+            }
+            uint8_t udac = ldac_ready ? 1 : 0;
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, phased_values[0], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, phased_values[1], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, phased_values[2], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, phased_values[3], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, phased_values[4], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, phased_values[5], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, phased_values[6], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, phased_values[7], MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
 
             if (ldac_ready) {
 			    if (ldac_pulse_low(LDAC1_GPIO) < 0 || ldac_pulse_low(LDAC2_GPIO) < 0) {
@@ -328,9 +401,15 @@ printf("\nTest 4: Sweep on channel C of second MCP4728\n");
                     }
                 }
             }
-           // usleep(5000);
-printf("Value: %d\n", value);
-delay(10);
+            // Debug prints in this loop significantly reduce update rate and make the waveform look stepped.
+            // if ((i % 100) == 0) {
+            //     printf("Values: %u %u %u %u | %u %u %u %u\n",
+            //         (unsigned int)phased_values[0], (unsigned int)phased_values[1],
+            //         (unsigned int)phased_values[2], (unsigned int)phased_values[3],
+            //         (unsigned int)phased_values[4], (unsigned int)phased_values[5],
+            //         (unsigned int)phased_values[6], (unsigned int)phased_values[7]);
+            // }
+            delayMicroseconds(sample_delay_us);
 		}
 	}
     // while (1) {
