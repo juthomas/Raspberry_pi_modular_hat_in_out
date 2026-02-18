@@ -9,8 +9,11 @@
 #include <linux/i2c.h>
 #include <math.h>
 #include <stdint.h>
+#include <gpiod.h>
+#include <errno.h>
 
 #define CHIP_NAME "gpiochip0"
+#define CHIP_PATH "/dev/" CHIP_NAME
 
 #define DAC_1 0x63
 #define DAC_2 0x64
@@ -101,59 +104,108 @@ void i2c_write(int fd, uint8_t address, uint8_t* data, int length) {
     }
 }
 
-static int sysfs_write(const char *path, const char *value)
+typedef struct s_ldac_gpio_ctx {
+    struct gpiod_chip *chip;
+    struct gpiod_line_request *request;
+    int ready;
+}   t_ldac_gpio_ctx;
+
+static t_ldac_gpio_ctx g_ldac_ctx = {0};
+
+static void cleanup_ldac(void)
 {
-    int fd = open(path, O_WRONLY);
-    if (fd < 0) {
+    if (g_ldac_ctx.request) {
+        gpiod_line_request_release(g_ldac_ctx.request);
+        g_ldac_ctx.request = NULL;
+    }
+    if (g_ldac_ctx.chip) {
+        gpiod_chip_close(g_ldac_ctx.chip);
+        g_ldac_ctx.chip = NULL;
+    }
+    g_ldac_ctx.ready = 0;
+}
+
+static int setup_ldac(void)
+{
+    struct gpiod_line_settings *line_settings = NULL;
+    struct gpiod_line_config *line_config = NULL;
+    struct gpiod_request_config *request_config = NULL;
+    const unsigned int offsets[2] = {LDAC1_GPIO, LDAC2_GPIO};
+    const enum gpiod_line_value init_values[2] = {
+        GPIOD_LINE_VALUE_ACTIVE,
+        GPIOD_LINE_VALUE_ACTIVE
+    };
+
+    g_ldac_ctx.chip = gpiod_chip_open(CHIP_PATH);
+    if (!g_ldac_ctx.chip) {
+        printf("Error: unable to open %s for LDAC control: %s\n", CHIP_PATH, strerror(errno));
         return -1;
     }
-    ssize_t w = write(fd, value, strlen(value));
-    close(fd);
-    return (w == (ssize_t)strlen(value)) ? 0 : -1;
-}
 
-static int gpio_export(int gpio)
-{
-    char buf[64];
-    snprintf(buf, sizeof(buf), "/sys/class/gpio/export");
-    char val[16];
-    snprintf(val, sizeof(val), "%d", gpio);
-    // Ignorer l'erreur si déjà exporté
-    (void)sysfs_write(buf, val);
+    line_settings = gpiod_line_settings_new();
+    line_config = gpiod_line_config_new();
+    request_config = gpiod_request_config_new();
+    if (!line_settings || !line_config || !request_config) {
+        printf("Error: unable to allocate libgpiod config objects\n");
+        goto error;
+    }
+
+    if (gpiod_line_settings_set_direction(line_settings, GPIOD_LINE_DIRECTION_OUTPUT) < 0) {
+        printf("Error: failed to configure LDAC lines as outputs\n");
+        goto error;
+    }
+    if (gpiod_line_settings_set_output_value(line_settings, GPIOD_LINE_VALUE_ACTIVE) < 0) {
+        printf("Error: failed to set initial LDAC output value\n");
+        goto error;
+    }
+
+    if (gpiod_line_config_add_line_settings(line_config, offsets, 2, line_settings) < 0) {
+        printf("Error: failed to add LDAC line settings\n");
+        goto error;
+    }
+    if (gpiod_line_config_set_output_values(line_config, init_values, 2) < 0) {
+        printf("Error: failed to set LDAC initial levels\n");
+        goto error;
+    }
+
+    gpiod_request_config_set_consumer(request_config, "mcp4728-ldac");
+    g_ldac_ctx.request = gpiod_chip_request_lines(g_ldac_ctx.chip, request_config, line_config);
+    if (!g_ldac_ctx.request) {
+        printf("Error: unable to request LDAC GPIO lines on %s: %s\n", CHIP_PATH, strerror(errno));
+        goto error;
+    }
+
+    g_ldac_ctx.ready = 1;
+    gpiod_request_config_free(request_config);
+    gpiod_line_config_free(line_config);
+    gpiod_line_settings_free(line_settings);
     return 0;
+
+error:
+    gpiod_request_config_free(request_config);
+    gpiod_line_config_free(line_config);
+    gpiod_line_settings_free(line_settings);
+    cleanup_ldac();
+    return -1;
 }
 
-static int gpio_direction_out(int gpio)
+static int ldac_pulse_low(unsigned int gpio_offset)
 {
-    char path[64];
-    snprintf(path, sizeof(path), "/sys/class/gpio/gpio%d/direction", gpio);
-    return sysfs_write(path, "out");
-}
-
-static int gpio_write_value(int gpio, int value)
-{
-    char path[64];
-    snprintf(path, sizeof(path), "/sys/class/gpio/gpio%d/value", gpio);
-    return sysfs_write(path, value ? "1" : "0");
-}
-
-static void ldac_pulse_low(int gpio)
-{
-    gpio_write_value(gpio, 1);
+    if (!g_ldac_ctx.ready || !g_ldac_ctx.request) {
+        return -1;
+    }
+    if (gpiod_line_request_set_value(g_ldac_ctx.request, gpio_offset, GPIOD_LINE_VALUE_ACTIVE) < 0) {
+        return -1;
+    }
     usleep(2);
-    gpio_write_value(gpio, 0);
+    if (gpiod_line_request_set_value(g_ldac_ctx.request, gpio_offset, GPIOD_LINE_VALUE_INACTIVE) < 0) {
+        return -1;
+    }
     usleep(2);
-    gpio_write_value(gpio, 1);
-}
-
-static void setup_ldac(void)
-{
-    gpio_export(LDAC1_GPIO);
-    gpio_export(LDAC2_GPIO);
-    gpio_direction_out(LDAC1_GPIO);
-    gpio_direction_out(LDAC2_GPIO);
-    gpio_write_value(LDAC1_GPIO, 1);
-    gpio_write_value(LDAC2_GPIO, 1);
+    if (gpiod_line_request_set_value(g_ldac_ctx.request, gpio_offset, GPIOD_LINE_VALUE_ACTIVE) < 0) {
+        return -1;
+    }
+    return 0;
 }
 
 static int mcp4728_write_channel_with_udac(int fd, uint8_t address, uint8_t channel, uint16_t value, uint8_t vref, uint8_t gain, uint8_t power_down, uint8_t udac)
@@ -213,14 +265,16 @@ int mcp4728_write_multiple_channels(int fd, uint8_t address, uint16_t values[4])
     return 0;
 }
 
-void main(void)
+int main(void)
 {
 	const char *i2c_bus = "/dev/i2c-1";
 	int i2c_fd = i2c_init(i2c_bus);
+    int ldac_ready;
+    int ldac_error_reported = 0;
 
 	if (i2c_fd < 0) {
         printf("Error: failed to initialize I2C bus\n");
-		return;
+		return 1;
 	}
 
 	scan_i2c_bus(i2c_fd);
@@ -230,37 +284,53 @@ printf("\n=== MCP4728 Tests ===\n");
 printf("\nTest 1: Write to channel A of first MCP4728 (0x63)\n");
     printf("Valeur: 2048\n");
     mcp4728_set_output(i2c_fd, DAC_1, 0, 2048);
-    usleep(100000);
+//    usleep(100000);
+	delay(500);
 	
 printf("\nTest 2: Write to channel B of second MCP4728 (0x64)\n");
     printf("Valeur: 4095\n");
     mcp4728_set_output(i2c_fd, DAC_2, 1, 4095);
-	usleep(100000);
+//	usleep(100000);
+	delay(500);
 	
 printf("\nTest 3: Write all channels of first MCP4728\n");
     uint16_t values[4] = {1024, 2048, 3072, 4095};
 	mcp4728_write_multiple_channels(i2c_fd, DAC_1, values);
-	usleep(100000);
-	
+//	usleep(100000);
+	delay(500);	
 printf("\nTest 4: Sweep on channel C of second MCP4728\n");
-	setup_ldac();
+	ldac_ready = (setup_ldac() == 0);
+    if (!ldac_ready) {
+        // Keep outputs moving even if LDAC cannot be driven (kernel GPIO mapping changed, permissions, etc.).
+        printf("Warning: LDAC init failed, falling back to immediate DAC update mode (UDAC=0).\n");
+    }
 	while (1) {
 		for (int i = 0; i < 1000; i++) {
 		double angle = 2.0 * 3.14159 * i / 1000.0;
 		uint16_t value = (uint16_t)(2048 + 2047 * sin(angle));
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
+            uint8_t udac = ldac_ready ? 1 : 0;
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_1, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
 
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
-			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, 1);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 0, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 1, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 2, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
+			mcp4728_write_channel_with_udac(i2c_fd, DAC_2, 3, value, MCP4728_VREF_INTERNAL, MCP4728_GAIN_X1, 0, udac);
 
-			ldac_pulse_low(LDAC1_GPIO);
-			ldac_pulse_low(LDAC2_GPIO);
-            usleep(5000);
+            if (ldac_ready) {
+			    if (ldac_pulse_low(LDAC1_GPIO) < 0 || ldac_pulse_low(LDAC2_GPIO) < 0) {
+                    ldac_ready = 0;
+                    if (!ldac_error_reported) {
+                        printf("Warning: LDAC pulse failed, switching to immediate updates (UDAC=0).\n");
+                        ldac_error_reported = 1;
+                    }
+                }
+            }
+           // usleep(5000);
+printf("Value: %d\n", value);
+delay(10);
 		}
 	}
     // while (1) {
@@ -288,4 +358,6 @@ printf("\nTest 4: Sweep on channel C of second MCP4728\n");
 printf("\nTests finished!\n");
 	
 	close(i2c_fd);
+    cleanup_ldac();
+    return 0;
 }
